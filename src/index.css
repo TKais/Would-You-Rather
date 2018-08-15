@@ -59,5 +59,11 @@ body {
 .navmenu li a {
 	text-decoration: none;
 	color: #000000;
+	padding: 10px;
+}
+
+.navmenu li a:hover {
+	background-color: #0099ff;
+	color: #FFFFFF;
 }
 
