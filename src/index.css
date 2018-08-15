@@ -3,3 +3,54 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+/**/
+/*APP STYLES*/
+/**/
+
+.main-app {
+	margin: 3rem;
+}
+
+/**/
+/*SIGN IN STYLES*/
+/**/
+
+.signin {
+	display: flex;
+	justify-content: center;
+	margin-top: 6rem;
+}
+
+.signin__header {
+	padding: 6rem;
+}
+
+.signin__select {
+	width: 85%;
+	margin-left: 1rem !important;
+	margin-right: 1rem !important;
+	margin-bottom: 3rem !important;
+}
+
+
+/**/
+/*NAV STYLES*/
+/**/
+
+.navmenu {
+	border-bottom: 2px solid #CCCCCC;
+}
+
+.navmenu__list {
+	display: flex;
+    flex-direction: row;
+	list-style-type: none;
+    justify-content: space-between;
+}
+
+.navmenu li a {
+	text-decoration: none;
+	color: #000000;
+}
+
