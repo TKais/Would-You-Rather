@@ -3,6 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 // TODO: Get data passed down from App.js
 const names = [{ name: 'tiff'}, {name: 'ale'}, { name: 'inna'}];
@@ -40,6 +41,11 @@ class SignIn extends React.Component {
 			              </MenuItem>
 		              ))}
 	              </TextField>
+	              <Button
+			        variant="contained"
+			        color="primary"
+			        className="signin__button"
+			      >Sign In</Button>
 				</Paper>
 			</div>
 		);

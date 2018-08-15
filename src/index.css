@@ -10,6 +10,7 @@ body {
 
 .main-app {
 	margin: 3rem;
+	font-family: sans-serif;
 }
 
 /**/
@@ -31,6 +32,12 @@ body {
 	margin-left: 1rem !important;
 	margin-right: 1rem !important;
 	margin-bottom: 3rem !important;
+}
+
+.signin__button {
+	width: 85%;
+	margin: 1rem !important;
+	background-color: #0099ff !important;
 }
 
 
