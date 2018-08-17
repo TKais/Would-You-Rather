@@ -1,16 +1,22 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import LoadingBar from 'react-redux-loading';
+import { getUserData } from '../actions/shared';
+import { LoadingBar } from 'react-redux-loading';
 import NavMenu from './NavMenu';
 import Home from './Home';
 import SignIn from './SignIn';
 
 class App extends Component {
+  componentDidMount() {
+    // this.props.dispatch(getUserData());
+  }
+
   render() {
     return (
       <Router>
         <Fragment>
+          <LoadingBar />
           <div className='main-app'>
             <NavMenu />
             <Route path='/' exact component={SignIn} />
@@ -21,10 +27,11 @@ class App extends Component {
   }
 }
 
-// function mapStateToProps ({ authedUser }) {
-//   return {
-//     loading: authedUser === null
-//   }
-// }
+function mapStateToProps ({ currentUser }) {
+  return {
+    loading: currentUser === null
+  }
+}
 
-export default App;
+
+export default connect(mapStateToProps)(App);
