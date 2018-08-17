@@ -7,7 +7,7 @@ export function getUserData() {
 	return (dispatch) => {
 		dispatch(showLoading())
 		return _getUsers()
-		    .then( ({users}) => {
+		    .then( (users) => {
 		    	console.log(users);
 		    	dispatch( UserActions.setCurrentUser() );
 			  	dispatch(hideLoading());
