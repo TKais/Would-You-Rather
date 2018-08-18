@@ -8,8 +8,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-const names = [{ name: 'tiff'}, {name: 'ale'}, { name: 'inna'}];
-
 class SignIn extends React.Component {
 
 	state = {
@@ -37,9 +35,9 @@ class SignIn extends React.Component {
 			          onChange={this.handleChange}
 			          margin="normal"
 			      >
-			          {Object.keys(this.props.allUsers).map( user => (
-				          <MenuItem key={this.props.allUsers[user].id} value={this.props.allUsers[user].name}>
-			                {this.props.allUsers[user].name}
+			          {Object.keys(this.props.users).map( user => (
+				          <MenuItem key={this.props.users[user].id} value={this.props.users[user].name}>
+			                {this.props.users[user].name}
 			              </MenuItem>
 		              ))}
 	              </TextField>
@@ -54,9 +52,9 @@ class SignIn extends React.Component {
 	}
 }
 
-function mapStateToProps({ allUsers }) {
+function mapStateToProps({ users }) {
 	return {
-		allUsers
+	    users
 	}
 }
 
