@@ -13,6 +13,14 @@ class App extends Component {
     this.props.dispatch(getAllData());
   }
 
+  configureRoutes() {
+    if(this.props.currentUser !== null) {
+      return <Route path='/' exact component={Home} />;
+    } else {
+      return <Route path='/' exact component={SignIn} />;
+    }
+  }
+
   render() {
     return (
       <Router>
@@ -20,7 +28,7 @@ class App extends Component {
           <LoadingBar />
           <div className='main-app'>
             <NavMenu />
-            <Route path='/' exact component={SignIn} />
+            { this.configureRoutes() }
           </div>
         </Fragment>
       </Router>
@@ -30,7 +38,8 @@ class App extends Component {
 
 function mapStateToProps ({ currentUser }) {
   return {
-    loading: currentUser === null
+    loading: currentUser === null,
+    currentUser,
   }
 }
 
