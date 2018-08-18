@@ -1,6 +1,6 @@
 import { GET_USERS } from '../actions/users';
 
-export function allUsers(state = {}, action) {
+export function users(state = {}, action) {
 	switch(action.type) {
 		case GET_USERS:
 		    return {
