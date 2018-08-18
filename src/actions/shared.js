@@ -1,15 +1,16 @@
-import { _getUsers } from '../data/_DATA';
 import { showLoading, hideLoading } from 'react-redux-loading';
 import * as UserActions from './users';
+import * as QuestionActions from './questions';
+import { getInitialData } from '../data/api';
 
 // Uses Thunk pattern for async data
-export function getUserData() {
+export function getAllData() {
 	return (dispatch) => {
 		dispatch(showLoading())
-		return _getUsers()
-		    .then( (users) => {
-		    	dispatch( UserActions.getUsers(users) );
-			  	dispatch(hideLoading());
+		return getInitialData()
+		    .then( (data) => {
+		    	dispatch( UserActions.getUsers(data.users));
+		    	dispatch( QuestionActions.getQuestions(data.questions));
 		    });
 	} 
 }
