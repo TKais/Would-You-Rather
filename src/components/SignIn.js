@@ -16,7 +16,9 @@ class SignIn extends React.Component {
 
 	handleChange = (e) => {
 		const value = e.target.value;
+		const id = value.toLowerCase().replace(/\s/g, '');
 		this.setState({ val: value });
+		this.props.dispatch(setCurrentUser(id));
 	}
 
 	render() {
