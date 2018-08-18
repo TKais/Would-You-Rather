@@ -8,6 +8,7 @@ import Home from './Home';
 import SignIn from './SignIn';
 
 class App extends Component {
+
   componentDidMount() {
     this.props.dispatch(getUserData());
   }
