@@ -1,11 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { setCurrentUser } from '../actions/currentUser';
+import { getUserData } from '../actions/shared';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-// TODO: Get data passed down from App.js
 const names = [{ name: 'tiff'}, {name: 'ale'}, { name: 'inna'}];
 
 class SignIn extends React.Component {
@@ -35,9 +37,9 @@ class SignIn extends React.Component {
 			          onChange={this.handleChange}
 			          margin="normal"
 			      >
-			          {names.map( option => (
-				          <MenuItem key={option.name} value={option.name}>
-			                {option.name}
+			          {Object.keys(this.props.allUsers).map( user => (
+				          <MenuItem key={this.props.allUsers[user].id} value={this.props.allUsers[user].name}>
+			                {this.props.allUsers[user].name}
 			              </MenuItem>
 		              ))}
 	              </TextField>
@@ -52,4 +54,10 @@ class SignIn extends React.Component {
 	}
 }
 
-export default SignIn;
+function mapStateToProps({ allUsers }) {
+	return {
+		allUsers
+	}
+}
+
+export default connect(mapStateToProps)(SignIn);
