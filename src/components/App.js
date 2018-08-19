@@ -6,6 +6,7 @@ import { LoadingBar } from 'react-redux-loading';
 import NavMenu from './NavMenu';
 import Home from './Home';
 import SignIn from './SignIn';
+import CurrentUser from './CurrentUser';
 
 class App extends Component {
 
@@ -28,6 +29,7 @@ class App extends Component {
           <LoadingBar />
           <div className='main-app'>
             <NavMenu />
+            <CurrentUser />
             { this.configureRoutes() }
           </div>
         </Fragment>
@@ -36,10 +38,11 @@ class App extends Component {
   }
 }
 
-function mapStateToProps ({ currentUser }) {
+function mapStateToProps ({ currentUser, users }) {
   return {
     loading: currentUser === null,
     currentUser,
+    users
   }
 }
 
