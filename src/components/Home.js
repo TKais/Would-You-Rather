@@ -11,9 +11,9 @@ class Home extends React.Component {
 	}
 }
 
-function mapStateToProps({ currentUser }) {
+function mapStateToProps({ questions }) {
 	return {
-		currentUser: Object.values(currentUser).join('')
+		questions
 	}
 }
 
