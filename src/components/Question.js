@@ -3,7 +3,7 @@ import React from 'react';
 class Question extends React.Component {
 	render() {
 		return (
-			<div></div>
+			<div>A single question</div>
 		);
 	}
 }
