@@ -16,7 +16,7 @@ class CurrentUser extends React.Component {
 
 	render() {
 		return (
-			<div>{ this.getCurrentUser() }</div>
+			<div class="welcome">{ this.getCurrentUser() }</div>
 		);
 	}
 }

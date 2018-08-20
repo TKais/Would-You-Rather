@@ -67,3 +67,10 @@ body {
 	color: #FFFFFF;
 }
 
+/**/
+/*CURRENT USER STYLES*/
+/**/
+.welcome {
+	float: right;
+	margin-top: 1rem;
+}
