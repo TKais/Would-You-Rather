@@ -16,8 +16,12 @@ class SignIn extends React.Component {
 
 	handleChange = (e) => {
 		const value = e.target.value;
-		const id = value.toLowerCase().replace(/\s/g, '');
 		this.setState({ val: value });
+	}
+
+	handleClick = () => {
+		const val = this.state.val;
+		const id = val.toLowerCase().replace(/\s/g, '');
 		this.props.dispatch(setCurrentUser(id));
 	}
 
@@ -47,6 +51,7 @@ class SignIn extends React.Component {
 			        variant="contained"
 			        color="primary"
 			        className="signin__button"
+			        onClick={this.handleClick}
 			      >Sign In</Button>
 				</Paper>
 			</div>
