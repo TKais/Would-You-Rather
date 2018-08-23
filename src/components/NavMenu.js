@@ -10,20 +10,13 @@ class NavMenu extends React.Component {
 		showError : false
 	}
 
-	constructor() {
-		super();
-		this.handleClick = this.handleClick.bind(this);
-		this.handleState = this.handleState.bind(this);
-		this.handleErrorMessageClose = this.handleErrorMessageClose.bind(this);
-	}
-
-	generateLogOutLink() {
+	generateLogOutLink = () => {
 		if( this.props.currentUser !== null ) {
 			return <li><NavLink to='/' exact activeClassName='active logout'>Logout</NavLink></li>;
 		}
 	}
 
-	currentUserIsDefined( route ) {
+	currentUserIsDefined = ( route ) => {
 		if( this.props.currentUser !== null ) {
 			return route;
 		} else {
@@ -31,7 +24,7 @@ class NavMenu extends React.Component {
 		}
 	}
 
-	handleClick( event ) {
+	handleClick = ( event ) => {
 		const classes = Array.from(event.target.classList);
 		if(classes.indexOf('logout') > -1) {
 			this.props.dispatch(setCurrentUser(null));
@@ -40,12 +33,12 @@ class NavMenu extends React.Component {
 		this.handleState();
 	}
 
-	handleState() {
+	handleState = () => {
 		const userState = this.props.currentUser === null;
 		this.setState({ showError : userState });
 	}
 
-	handleErrorMessageClose(event, reason) {
+	handleErrorMessageClose = (event, reason) => {
 	    if (reason === 'clickaway') {
 	      return;
 	    }
