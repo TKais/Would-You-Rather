@@ -51,7 +51,7 @@ class NavMenu extends React.Component {
 			<nav className="navmenu">
 			    <ul className="navmenu__list" onClick={this.handleClick}>
 			        <li><NavLink to={this.currentUserIsDefined('/')} exact activeClassName='active home'>Home</NavLink></li>
-			        <li><NavLink to={this.currentUserIsDefined('/new')} activeClassName='active new'>New Question</NavLink></li>
+			        <li><NavLink to={this.currentUserIsDefined('/add')} activeClassName='active add'>New Question</NavLink></li>
 			        <li><NavLink to={this.currentUserIsDefined('/leaderboard')} activeClassName='active leaderboard'>Leaderboard</NavLink></li>
 			        { this.generateLogOutLink() }
 			    </ul>
