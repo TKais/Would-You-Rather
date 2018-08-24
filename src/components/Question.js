@@ -18,7 +18,7 @@ class Question extends React.Component {
 		return (
 			<li className="questionlist__menu-item" key={this.props.listKey}>
 			    <p>{ `${this.formatName(this.props.question)} asks...` }</p>
-    	        <NavLink to={this.getRoute(this.props.question)} exact className='questionlist__menu-item-anchor'>{this.props.question.id}</NavLink>
+    	        <NavLink to={this.getRoute(this.props.question)} exact className='questionlist__menu-item-anchor'>View Poll</NavLink>
         	</li>
 		);
 	}
