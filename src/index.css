@@ -93,5 +93,11 @@ body {
 .questionlist__menu-item {
     border: 1px solid #666666;
     padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.questionlist__menu-item-anchor {
+	border: 1px solid #666666;
+	padding: 1rem;
 }
 
