@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { getAllData } from '../actions/shared';
 import { LoadingBar } from 'react-redux-loading';
 import NavMenu from './NavMenu';
-import QuestionList from './QuestionList';
+import Home from './Home';
 import SignIn from './SignIn';
 import CurrentUser from './CurrentUser';
 
@@ -16,7 +16,7 @@ class App extends Component {
 
   configureRoutes() {
     if(this.props.currentUser !== null) {
-      return <Route path='/' exact component={QuestionList} />;
+      return <Route path='/' exact component={Home} />;
     } else {
       return <Route path='/' exact component={SignIn} />;
     }
