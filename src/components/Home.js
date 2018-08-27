@@ -5,14 +5,24 @@ import QuestionList from './QuestionList';
 class Home extends React.Component {
 	render() {
 		return (
-			<QuestionList />
+			<div>
+			    <div>
+				    <h3>Unanswered Questions</h3>
+					<QuestionList questions={this.props.unanswered} />
+				</div>
+				<div>
+					<h3>Answered Questions</h3>
+					<QuestionList questions={this.props.answered} />
+				</div>
+			</div>
 		);
 	}
 }
 
 function mapStateToProps({ questions }) {
 	return {
-		questions
+		answered: questions,
+		unsanswered: questions,
 	}
 }
 
