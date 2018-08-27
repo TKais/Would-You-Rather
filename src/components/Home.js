@@ -22,7 +22,7 @@ class Home extends React.Component {
 function mapStateToProps({ questions }) {
 	return {
 		answered: questions,
-		unsanswered: questions,
+		unanswered: questions,
 	}
 }
 
