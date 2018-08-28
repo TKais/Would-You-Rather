@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import '../assets/css/currentuser.css';
 
 class CurrentUser extends React.Component {
 	getCurrentUser() {
