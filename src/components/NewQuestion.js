@@ -9,6 +9,7 @@ class NewQuestion extends React.Component {
 	state = {
 		optionOneValue: '',
 		optionTwoValue: '',
+		redirect: false,
 	}
 
 	handleSubmit = (event) => {
@@ -16,6 +17,9 @@ class NewQuestion extends React.Component {
 		const { optionOneValue, optionTwoValue } = this.state;
 		const question = { optionOneValue, optionTwoValue, author: this.props.currentUser };
 		this.props.dispatch(createQuestion(question));
+		if( optionOneValue && optionTwoValue ) {
+			this.setState({ redirect: true });
+		}
 	}
 
 	handleChange = (event) => {
@@ -27,6 +31,11 @@ class NewQuestion extends React.Component {
 	}
 
 	render() {
+		const { redirect } = this.state;
+		if ( redirect ) {
+	      return <Redirect to='/' />
+	    }
+
 		return (
 			<div className="new-question">
 			    <h2>Create New Question</h2>
