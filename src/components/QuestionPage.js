@@ -1,4 +1,5 @@
 import React from 'react';
+import '../assets/css/questionpage.css';
 
 class QuestionPage extends React.Component {
 	render() {
