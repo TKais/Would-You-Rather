@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import QuestionList from './QuestionList';
+import '../assets/css/home.css';
 
 class Home extends React.Component {
 	state = {
