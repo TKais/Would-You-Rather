@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import '../assets/css/signin.css';
 import { setCurrentUser } from '../actions/currentUser';
 import { getUserData } from '../actions/shared';
 import Paper from '@material-ui/core/Paper';
