@@ -1,0 +1,16 @@
+.new-question {
+	display: flex;
+	margin-top: 1rem;
+	flex-direction: column;
+}
+
+#option-one, #option-two {
+	margin-bottom: 1rem;
+	display: block;
+	width: 25%;
+}
+
+.new-question__form-button {
+	width: 25%;
+	background-color: #0099ff !important;
+}
