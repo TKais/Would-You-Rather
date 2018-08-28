@@ -7,17 +7,17 @@ import { createQuestion } from '../actions/questions';
 
 class NewQuestion extends React.Component {
 	state = {
-		optionOneValue: '',
-		optionTwoValue: '',
+		optionOneText: '',
+		optionTwoText: '',
 		redirect: false,
 	}
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-		const { optionOneValue, optionTwoValue } = this.state;
-		const question = { optionOneValue, optionTwoValue, author: this.props.currentUser };
+		const { optionOneText, optionTwoText } = this.state;
+		const question = { optionOneText, optionTwoText, author: this.props.currentUser };
 		this.props.dispatch(createQuestion(question));
-		if( optionOneValue && optionTwoValue ) {
+		if( optionOneText && optionTwoText ) {
 			this.setState({ redirect: true });
 		}
 	}
@@ -25,7 +25,7 @@ class NewQuestion extends React.Component {
 	handleChange = (event) => {
 		const value = event.target.value;
 		const id = event.target.id;
-		const inputToUpdate = id === 'option-one' ? 'optionOneValue' : 'optionTwoValue';
+		const inputToUpdate = id === 'option-one' ? 'optionOneText' : 'optionTwoText';
 
 		this.setState({ [inputToUpdate]: value });
 	}
@@ -41,9 +41,9 @@ class NewQuestion extends React.Component {
 			    <h2>Create New Question</h2>
 				<form className="new-question__form" onSubmit={ this.handleSubmit }>
 					<label htmlFor="option-one">Option One</label>
-					<input id="option-one" type="text" value={ this.state.optionOneValue } onChange={ this.handleChange } />
+					<input id="option-one" type="text" value={ this.state.optionOneText } onChange={ this.handleChange } />
 					<label htmlFor="option-two">Option Two</label>
-					<input id="option-two" type="text" value={ this.state.optionTwoValue } onChange={ this.handleChange } />
+					<input id="option-two" type="text" value={ this.state.optionTwoText } onChange={ this.handleChange } />
 					<Button
 				        variant="contained"
 				        type="submit"
