@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import '../assets/css/navmenu.css';
 import { setCurrentUser } from '../actions/currentUser';
 import Snackbar from '@material-ui/core/Snackbar';
 
