@@ -1,0 +1,9 @@
+.questionlist {
+	margin-top: 6rem;
+	display: flex;
+	justify-content: center;
+}
+
+.questionlist__menu {
+    list-style-type: none;
+}

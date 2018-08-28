@@ -1,0 +1,22 @@
+.signin {
+	display: flex;
+	justify-content: center;
+	margin-top: 6rem;
+}
+
+.signin__header {
+	padding: 6rem;
+}
+
+.signin__select {
+	width: 85%;
+	margin-left: 1rem !important;
+	margin-right: 1rem !important;
+	margin-bottom: 3rem !important;
+}
+
+.signin__button {
+	width: 85%;
+	margin: 1rem !important;
+	background-color: #0099ff !important;
+}

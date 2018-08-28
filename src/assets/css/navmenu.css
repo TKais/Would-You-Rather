@@ -1,0 +1,21 @@
+.navmenu {
+	border-bottom: 2px solid #CCCCCC;
+}
+
+.navmenu__list {
+	display: flex;
+    flex-direction: row;
+	list-style-type: none;
+    justify-content: space-between;
+}
+
+.navmenu li a {
+	text-decoration: none;
+	color: #000000;
+	padding: 10px;
+}
+
+.navmenu li a:hover {
+	background-color: #0099ff;
+	color: #FFFFFF;
+}
