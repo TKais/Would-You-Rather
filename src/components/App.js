@@ -7,6 +7,8 @@ import NavMenu from './NavMenu';
 import Home from './Home';
 import SignIn from './SignIn';
 import CurrentUser from './CurrentUser';
+import QuestionPage from './QuestionPage';
+import NewQuestion from './NewQuestion';
 
 class App extends Component {
 
@@ -31,6 +33,10 @@ class App extends Component {
             <NavMenu />
             <CurrentUser />
             { this.configureRoutes() }
+            <div>
+              <Route path='/questions/:id' component={QuestionPage} />
+              <Route path='/add' component={NewQuestion} />
+            </div>
           </div>
         </Fragment>
       </Router>
