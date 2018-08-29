@@ -22,6 +22,7 @@ class NewQuestion extends React.Component {
 			this.setState( () => ({
 				optionOneText: '',
 				optionTwoText: '',
+				redirect: true,
 			}));
 		}
 	}

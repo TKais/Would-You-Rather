@@ -19,7 +19,7 @@ export function submitQuestion(question) {
 }
 
 export function createQuestion(question) {
-	return (dispatch, getState) => {
+	return (dispatch) => {
 		dispatch(showLoading());
 		return _saveQuestion(question)
 		    .then( (data) => dispatch(submitQuestion(data)))

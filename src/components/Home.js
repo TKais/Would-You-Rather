@@ -4,16 +4,17 @@ import QuestionList from './QuestionList';
 import '../assets/css/home.css';
 
 class Home extends React.Component {
-	state = {
-		unanswered: {},
-		answered: {},
-	}
-
-	componentDidMount() {
+	generateAnsweredQuestions = () => {
 		const user = this.props.users[this.props.currentUser];
 		const answered = Object.keys(user.answers).map( (answer) => {
 			return this.props.questions[answer];
 		});
+
+		return answered;
+	}
+
+	generateUnansweredQuestions = () => {
+		const user = this.props.users[this.props.currentUser];
 		const unanswered = Object.keys(this.props.questions).map( (question) => {
 			if( !(user.answers.hasOwnProperty(question)) ) {
 				return this.props.questions[question];
@@ -21,10 +22,8 @@ class Home extends React.Component {
 				return null;
 			}
 		});
-		this.setState({
-			answered,
-			unanswered
-		});
+
+		return unanswered;
 	}
 
 	render() {
@@ -32,11 +31,11 @@ class Home extends React.Component {
 			<div>
 			    <div>
 				    <h3>Unanswered Questions</h3>
-					<QuestionList questions={this.state.unanswered} />
+					<QuestionList questions={ this.generateAnsweredQuestions() } />
 				</div>
 				<div>
 					<h3>Answered Questions</h3>
-					<QuestionList questions={this.state.answered} />
+					<QuestionList questions={ this.generateUnansweredQuestions() } />
 				</div>
 			</div>
 		);
