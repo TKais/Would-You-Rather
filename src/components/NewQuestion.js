@@ -4,7 +4,6 @@ import { Redirect } from 'react-router-dom';
 import '../assets/css/newquestion.css';
 import Button from '@material-ui/core/Button';
 import { createQuestion } from '../actions/questions';
-import LoadingBar from 'react-redux-loading';
 
 class NewQuestion extends React.Component {
 	state = {
@@ -62,7 +61,7 @@ class NewQuestion extends React.Component {
 	}
 }
 
-function mapStateToProps({ currentUser, loader }) {
+function mapStateToProps({ currentUser }) {
 	return {
 		currentUser: currentUser ? Object.values(currentUser).join('') : null
 	}
