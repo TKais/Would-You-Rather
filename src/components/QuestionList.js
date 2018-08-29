@@ -10,7 +10,7 @@ function QuestionList(props){
 		            Object.keys(props.questions).map( (question) => {
 		            	if( props.questions[question] !== null ) {
 				        	return (
-				        		<Question question={props.questions[question]} listKey={props.questions[question].id} />
+				        		<Question question={props.questions[question]} key={props.questions[question].id} />
 			        		);
 				        }
 		          }) :
