@@ -9,7 +9,6 @@ class Question extends React.Component {
 	}
 
 	formatName = (question) => {
-		console.log('?????', question);
 		const author = question.author;
 		const formattedAuthor = this.props.users[author] && this.props.users[author].name;
 
