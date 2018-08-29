@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import '../assets/css/newquestion.css';
 import Button from '@material-ui/core/Button';
 import { createQuestion } from '../actions/questions';
+import LoadingBar from 'react-redux-loading';
 
 class NewQuestion extends React.Component {
 	state = {
@@ -18,7 +19,10 @@ class NewQuestion extends React.Component {
 		const question = { optionOneText, optionTwoText, author: this.props.currentUser };
 		this.props.dispatch(createQuestion(question));
 		if( optionOneText && optionTwoText ) {
-			this.setState({ redirect: true });
+			this.setState( () => ({
+				optionOneText: '',
+				optionTwoText: '',
+			}));
 		}
 	}
 
@@ -32,7 +36,7 @@ class NewQuestion extends React.Component {
 
 	render() {
 		const { redirect } = this.state;
-		if ( redirect ) {
+		if ( redirect  ) {
 	      return <Redirect to='/' />
 	    }
 
@@ -57,7 +61,7 @@ class NewQuestion extends React.Component {
 	}
 }
 
-function mapStateToProps({ currentUser }) {
+function mapStateToProps({ currentUser, loader }) {
 	return {
 		currentUser: Object.values(currentUser).join('')
 	}
