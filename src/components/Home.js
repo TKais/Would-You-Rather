@@ -31,11 +31,11 @@ class Home extends React.Component {
 			<div>
 			    <div>
 				    <h3>Unanswered Questions</h3>
-					<QuestionList questions={ this.generateAnsweredQuestions() } />
+					<QuestionList questions={ this.generateUnansweredQuestions() } />
 				</div>
 				<div>
 					<h3>Answered Questions</h3>
-					<QuestionList questions={ this.generateUnansweredQuestions() } />
+					<QuestionList questions={ this.generateAnsweredQuestions() } />
 				</div>
 			</div>
 		);
