@@ -17,8 +17,8 @@ class NewQuestion extends React.Component {
 		event.preventDefault();
 		const { optionOneText, optionTwoText } = this.state;
 		const question = { optionOneText, optionTwoText, author: this.props.currentUser };
-		this.props.dispatch(createQuestion(question));
 		if( optionOneText && optionTwoText ) {
+			this.props.dispatch(createQuestion(question));
 			this.setState( () => ({
 				optionOneText: '',
 				optionTwoText: '',
@@ -37,7 +37,7 @@ class NewQuestion extends React.Component {
 
 	render() {
 		const { redirect } = this.state;
-		if ( redirect  ) {
+		if ( redirect || this.props.currentUser === null ) {
 	      return <Redirect to='/' />
 	    }
 
@@ -64,7 +64,7 @@ class NewQuestion extends React.Component {
 
 function mapStateToProps({ currentUser, loader }) {
 	return {
-		currentUser: Object.values(currentUser).join('')
+		currentUser: currentUser ? Object.values(currentUser).join('') : null
 	}
 }
 
