@@ -10,7 +10,7 @@ export function questions(state = {}, action) {
 		case CREATE_QUESTION:
 		    return {
 		    	...state,
-		    	...action.question,
+		    	[action.question.id]: action.question,
 		    }
 		default:
 		    return state
