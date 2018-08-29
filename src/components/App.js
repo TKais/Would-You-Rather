@@ -10,6 +10,7 @@ import SignIn from './SignIn';
 import CurrentUser from './CurrentUser';
 import QuestionPage from './QuestionPage';
 import NewQuestion from './NewQuestion';
+import Leaderboard from './Leaderboard';
 
 class App extends Component {
 
@@ -37,6 +38,7 @@ class App extends Component {
             <div>
               <Route path='/questions/:id' component={QuestionPage} />
               <Route path='/add' component={NewQuestion} />
+              <Route path='/leaderboard' component={Leaderboard} />
             </div>
           </div>
         </Fragment>
