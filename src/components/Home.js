@@ -51,14 +51,14 @@ class Home extends React.Component {
 				        variant="contained"
 				        type="button"
 				        color="primary"
-				        className="home-component__buttons--unanswered"
+				        className={`home-component__buttons--unanswered ${ this.state.hideUnanswered === false ? 'home-component__buttons--unanswered-active' : '' }`}
 				        onClick={this.handleClick}
 				    >Unanswered Questions</Button>
 				    <Button
 				        variant="contained"
 				        type="button"
 				        color="primary"
-				        className="home-component__buttons--answered"
+				        className={`home-component__buttons--answered ${ this.state.hideAnswered === false ? 'home-component__buttons--answered-active' : '' }`}
 				        onClick={this.handleClick}
 				    >Answered Questions</Button>
 			    </div>
