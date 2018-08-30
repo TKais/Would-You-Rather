@@ -30,6 +30,10 @@
 	margin-bottom: 2rem;
 }
 
+.questionlist__menu-item-title {
+	text-align: center;
+}
+
 .questionlist__menu-item-option::first-letter {
 	text-transform: capitalize;
 }

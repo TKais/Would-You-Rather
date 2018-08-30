@@ -19,7 +19,7 @@ class Question extends React.Component {
 		return (
 			<li className="questionlist__menu-item" key={this.props.key}>
 			    <h3 className="questionlist__menu-item-author">{ `${this.formatName(this.props.question)} asks...` }</h3>
-			    <h4>Would You Rather:</h4>
+			    <h4 className="questionlist__menu-item-title">Would You Rather:</h4>
 			    <p className="questionlist__menu-item-option">{this.props.question.optionOne.text}</p>
 			    <p className="questionlist__menu-item-OR">OR</p>
 			    <p className="questionlist__menu-item-option">{this.props.question.optionTwo.text}</p>
