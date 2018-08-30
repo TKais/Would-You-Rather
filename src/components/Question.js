@@ -19,7 +19,11 @@ class Question extends React.Component {
 		return (
 			<li className="questionlist__menu-item" key={this.props.key}>
 			    <h3 className="questionlist__menu-item-author">{ `${this.formatName(this.props.question)} asks...` }</h3>
-    	        <NavLink to={this.getRoute(this.props.question)} exact className='questionlist__menu-item-anchor'>View Poll</NavLink>
+			    <h4>Would You Rather:</h4>
+			    <p className="questionlist__menu-item-option">{this.props.question.optionOne.text}</p>
+			    <p className="questionlist__menu-item-OR">OR</p>
+			    <p className="questionlist__menu-item-option">{this.props.question.optionTwo.text}</p>
+    	        <NavLink to={this.getRoute(this.props.question)} exact className='questionlist__menu-item-anchor'><span>View Poll</span></NavLink>
         	</li>
 		);
 	}

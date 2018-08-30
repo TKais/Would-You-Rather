@@ -5,11 +5,20 @@
 }
 
 .questionlist__menu-item-anchor {
+	display: block;
 	border: 1px solid #666666;
-	padding: 1rem;
+	padding: 0.5rem;
 	text-decoration: none;
 	color: #FFFFFF;
 	background-color: #0099ff;
+	margin: 0 auto;
+	border-radius: 4px;
+}
+
+.questionlist__menu-item-anchor span {
+	pointer-events: none;
+	text-align: center;
+	display: block;
 }
 
 .questionlist__menu-item-anchor:hover {
@@ -19,4 +28,13 @@
 .questionlist__menu-item-author {
 	border-bottom: 1px solid #666666;
 	margin-bottom: 2rem;
+}
+
+.questionlist__menu-item-option::first-letter {
+	text-transform: capitalize;
+}
+
+.questionlist__menu-item-OR {
+	font-weight: 700;
+	text-align: center;
 }
