@@ -1,0 +1,25 @@
+.home-component {
+	margin-top: 5rem;
+}
+
+.home-component__buttons {
+	display: flex;
+	flex-direction: row;
+    justify-content: center;
+}
+
+.home-component__buttons--answered, .home-component__buttons--unanswered {
+	background-color: #0099ff !important;
+}
+
+.home-component__buttons--unanswered {
+	margin-right: 1rem !important;
+}
+
+.home-component__question-hide {
+	display: none;
+}
+
+.home-component__buttons--answered span, .home-component__buttons--unanswered span {
+	pointer-events: none;
+}
