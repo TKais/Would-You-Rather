@@ -43,6 +43,7 @@ class NewQuestion extends React.Component {
 		return (
 			<div className="new-question">
 			    <h2>Create New Question</h2>
+			    <h4>Would You Rather...</h4>
 				<form className="new-question__form" onSubmit={ this.handleSubmit }>
 					<label htmlFor="option-one">Option One</label>
 					<input id="option-one" type="text" value={ this.state.optionOneText } onChange={ this.handleChange } />
