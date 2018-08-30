@@ -25,6 +25,10 @@
 	pointer-events: none;
 }
 
+.home-component__buttons--answered:hover, .home-component__buttons--unanswered:hover {
+	background-color: #006bb2 !important;
+}
+
 .home-component__buttons--unanswered-active, .home-component__buttons--answered-active {
 	border: 3px solid #005b99 !important;
 }

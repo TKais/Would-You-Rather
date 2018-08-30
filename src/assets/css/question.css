@@ -34,6 +34,10 @@
 	text-transform: capitalize;
 }
 
+.questionlist__menu-item-option {
+	text-align: center;
+}
+
 .questionlist__menu-item-OR {
 	font-weight: 700;
 	text-align: center;
