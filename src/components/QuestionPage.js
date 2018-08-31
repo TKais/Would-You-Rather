@@ -10,28 +10,25 @@ class QuestionPage extends React.Component {
 		currentValue: '',
 	}
 
-	componentDidMount() {
-		console.log('PROPS---?', this.props);
-	}
-
 	handleSubmit = (event) => {
 		event.preventDefault();
-		// const { optionOneText, optionTwoText } = this.state;
-		// const question = { optionOneText, optionTwoText, author: this.props.currentUser };
-		// if( optionOneText && optionTwoText ) {
-		// 	this.props.dispatch(createQuestion(question));
-		// 	this.setState( () => ({
-		// 		optionOneText: '',
-		// 		optionTwoText: '',
-		// 		redirect: true,
-		// 	}));
-		// }
+		const { currentValue } = this.state;
+		const { id } = this.props.currentQuestion;
+		const { currentUser } = this.props;
+		const answer = { currentUser, id, currentValue };
+		if( currentValue ) {
+			// this.props.dispatch(createQuestion(question));
+			this.setState( () => ({
+				currentValue: '',
+				redirect: true,
+			}));
+		}
 	}
 
-	handleChange(event) {
-		const currentValue = event.target.value;
+	handleChange = (event) => {
+		const value = event.target.value;
 
-		this.setState({ currentValue });
+		this.setState({ currentValue: value });
 	}
 
 	render() {
@@ -45,14 +42,15 @@ class QuestionPage extends React.Component {
 			    <h3 className="single-question__author">{ `${this.props.currentQuestion.author} asks...` }</h3>
 			    <h4 className="single-question__title">Would You Rather:</h4>
 			    <form className="single-question__form" onSubmit={ this.handleSubmit } onChange={this.handleChange}>
-				    <input id="question1" type="radio" name="whichQuestion" value={ `${this.props.currentQuestion.optionOne.text}` } />
+				    <input id="question1" type="radio" name="whichQuestion" value={this.state.currentValue || 'optionOne'} />
 				    <label htmlFor="question1">{this.props.currentQuestion.optionOne.text}</label>
 				    <p className="single-question__OR">OR</p>
-				    <input id="question2" type="radio" name="whichQuestion" value={ `${this.props.currentQuestion.optionTwo.text}` } />
+				    <input id="question2" type="radio" name="whichQuestion" value={this.state.currentValue || 'optionTwo'} />
 				    <label htmlFor="question2">{this.props.currentQuestion.optionTwo.text}</label>
 	    	        <Button
 				        variant="contained"
 				        color="primary"
+				        type="submit"
 				        className="single-question__button"
 				    >Submit</Button>
 			    </form>
