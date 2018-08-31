@@ -1,0 +1,6 @@
+.single-question__button {
+	display: block !important;
+	background-color: #0099ff !important;
+	border: 3px solid #0099ff !important;
+	margin-top: 2rem !important;
+}
