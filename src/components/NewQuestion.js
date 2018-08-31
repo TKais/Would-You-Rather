@@ -54,7 +54,6 @@ class NewQuestion extends React.Component {
 				        type="submit"
 				        color="primary"
 				        className="new-question__form-button"
-				        onClick={this.handleClick}
 				    >Submit</Button>
 				</form>
 			</div>
