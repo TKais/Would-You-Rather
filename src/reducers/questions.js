@@ -13,10 +13,19 @@ export function questions(state = {}, action) {
 		    	[action.question.id]: action.question,
 		    }
 		case CREATE_ANSWER:
-			console.log('ACTION--->', action);
+		    const { answer } = action;
+			const newQuestionState = {
+				[answer.qid]: {
+					...state[answer.qid],
+					[answer.answer]: {
+						...state[answer.qid][answer.answer],
+						votes: state[answer.qid][answer.answer].votes.concat([answer.authedUser]),
+					}
+				}
+			};
 		    return {
 		    	...state,
-		    	[action.answer.qid]: action.answer,
+		    	...newQuestionState,
 		    }
 		default:
 		    return state
