@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { createAnswer } from '../actions/questions';
 import Button from '@material-ui/core/Button';
 import '../assets/css/questionpage.css';
 
@@ -15,9 +16,9 @@ class QuestionPage extends React.Component {
 		const { currentValue } = this.state;
 		const { id } = this.props.currentQuestion;
 		const { currentUser } = this.props;
-		const answer = { currentUser, id, currentValue };
+		const answer = { authedUser: currentUser, qid: id, answer: currentValue };
 		if( currentValue ) {
-			// this.props.dispatch(createQuestion(question));
+			this.props.dispatch(createAnswer(answer));
 			this.setState( () => ({
 				currentValue: '',
 				redirect: true,

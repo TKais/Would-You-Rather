@@ -1,4 +1,4 @@
-import { GET_QUESTIONS, CREATE_QUESTION } from '../actions/questions';
+import { GET_QUESTIONS, CREATE_QUESTION, CREATE_ANSWER } from '../actions/questions';
 
 export function questions(state = {}, action) {
 	switch(action.type) {
@@ -11,6 +11,12 @@ export function questions(state = {}, action) {
 		    return {
 		    	...state,
 		    	[action.question.id]: action.question,
+		    }
+		case CREATE_ANSWER:
+			console.log('ACTION--->', action);
+		    return {
+		    	...state,
+		    	[action.answer.qid]: action.answer,
 		    }
 		default:
 		    return state
