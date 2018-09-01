@@ -1,4 +1,4 @@
-import { _saveQuestion, _saveQuestionAnswer } from '../data/_DATA';
+import { _saveQuestion } from '../data/_DATA';
 
 export const GET_QUESTIONS = 'GET_QUESTIONS';
 export const CREATE_QUESTION = 'CREATE_QUESTION';
@@ -29,12 +29,5 @@ export function createQuestion(question) {
 	return (dispatch) => {
 		return _saveQuestion(question)
 		    .then( (data) => dispatch(submitQuestion(data)) )
-	}
-}
-
-export function createAnswer(answer) {
-	return (dispatch) => {
-		return _saveQuestionAnswer(answer)
-		    .then( (data) => dispatch(submitAnswer(answer)) )
 	}
 }
