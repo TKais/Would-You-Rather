@@ -18,5 +18,6 @@ export function createAnswer(answer) {
 	return (dispatch) => {
 		return _saveQuestionAnswer(answer)
 		    .then( () => dispatch(QuestionActions.submitAnswer(answer)) )
+		    .then( () => dispatch(UserActions.addUserAnswer(answer)) )
 	}
 }
