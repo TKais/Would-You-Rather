@@ -11,7 +11,7 @@ import CurrentUser from './CurrentUser';
 import QuestionPage from './QuestionPage';
 import NewQuestion from './NewQuestion';
 import Leaderboard from './Leaderboard';
-import Four04 from './Four04';
+import Error from './Error';
 
 class App extends Component {
 
@@ -40,7 +40,7 @@ class App extends Component {
               <Route path='/questions/:id' component={QuestionPage} />
               <Route path='/add' component={NewQuestion} />
               <Route path='/leaderboard' component={Leaderboard} />
-              <Route path='/404' component={Four04} />
+              <Route path='/error' component={Error} />
             </div>
           </div>
         </Fragment>
