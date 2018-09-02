@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { createAnswer } from '../actions/shared';
 import Button from '@material-ui/core/Button';
-import Four04 from './Four04';
 import '../assets/css/questionpage.css';
 
 class QuestionPage extends React.Component {
@@ -33,7 +32,15 @@ class QuestionPage extends React.Component {
 
 	render() {
 		if ( this.props.currentUser === null ) {
-	      return <Redirect to='/404' />
+	      return <Redirect to={{
+                pathname: '/error',
+                state: { errorType: '401' }
+            }} />
+	    } else if( !this.props.currentQuestion ) {
+	    	return <Redirect to={{
+                pathname: '/error',
+                state: { errorType: '404' }
+            }} />
 	    }
 
 		return (
