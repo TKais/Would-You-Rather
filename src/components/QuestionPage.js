@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { createAnswer } from '../actions/shared';
 import Button from '@material-ui/core/Button';
+import Four04 from './Four04';
 import '../assets/css/questionpage.css';
 
 class QuestionPage extends React.Component {
 	state = {
-		redirect: false,
 		currentValue: '',
 	}
 
@@ -21,7 +21,6 @@ class QuestionPage extends React.Component {
 			this.props.dispatch(createAnswer(answer));
 			this.setState( () => ({
 				currentValue: '',
-				redirect: true,
 			}));
 		}
 	}
@@ -33,9 +32,8 @@ class QuestionPage extends React.Component {
 	}
 
 	render() {
-		const { redirect } = this.state;
-		if ( redirect || this.props.currentUser === null ) {
-	      return <Redirect to='/' />
+		if ( this.props.currentUser === null ) {
+	      return <Redirect to='/404' />
 	    }
 
 		return (
