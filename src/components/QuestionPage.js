@@ -6,13 +6,15 @@ import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import Badge from '@material-ui/core/Badge';
 import '../assets/css/questionpage.css';
 
 class QuestionPage extends React.Component {
 	state = {
 		currentValue: '',
 		isAnswered: false,
-		percentage: 0,
+		optionOnePercentage: 0,
+		optionTwoPercentage: 0,
 	}
 
 	componentDidMount() {
@@ -27,19 +29,23 @@ class QuestionPage extends React.Component {
 
 			this.setState({ 
 				isAnswered: true,
-				percentage: result,
+				optionOnePercentage: result.optOne,
+				optionTwoPercentage: result.optTwo,
 			});
 		}
 	}
 
-	calculatePercentage = ( submitMode ) => {
-		const optionOneVotes = this.props.currentQuestion.optionOne.votes.length;
-		const optionTwoVotes = this.props.currentQuestion.optionTwo.votes.length;
-		const totalVotes = submitMode ? optionOneVotes + optionTwoVotes + 1 : optionOneVotes + optionTwoVotes;
+	calculatePercentage = ( currentValue ) => {
+		const optionOneVotes = currentValue === 'optionOne' ? this.props.currentQuestion.optionOne.votes.length + 1 : this.props.currentQuestion.optionOne.votes.length;
+		const optionTwoVotes = currentValue === 'optionTwo' ? this.props.currentQuestion.optionTwo.votes.length + 1 : this.props.currentQuestion.optionTwo.votes.length;
 		const totalUsers = Object.keys(this.props.users).length;
-		const voteDecimal = (totalVotes / totalUsers) * 100;
+		const voteDecimalOne = (optionOneVotes / totalUsers) * 100;
+		const voteDecimalTwo = (optionTwoVotes / totalUsers) * 100;
 
-		return parseInt(voteDecimal.toFixed(1));
+		return {
+			optOne: parseInt(voteDecimalOne.toFixed(1)),
+			optTwo: parseInt(voteDecimalTwo.toFixed(1)),
+		}
 	}
 
 	handleSubmit = (event) => {
@@ -49,12 +55,13 @@ class QuestionPage extends React.Component {
 		const { currentUser } = this.props;
 		const answer = { authedUser: currentUser, qid: id, answer: currentValue };
 		if( currentValue ) {
-			const result = this.calculatePercentage( true );
+			const result = this.calculatePercentage( currentValue );
 			this.props.dispatch(createAnswer(answer));
 			this.setState( () => ({
 				currentValue: '',
 				isAnswered: true,
-				percentage: result,
+				optionOnePercentage: result.optOne,
+				optionTwoPercentage: result.optTwo,
 			}));
 		}
 	}
@@ -86,7 +93,13 @@ class QuestionPage extends React.Component {
 						  <CardContent>
 						      <h3 className="single-question__author">{ `Asked by ${this.props.currentQuestion.author}` }</h3>
 							  <h4 className="single-question__title">Results:</h4>
-							  <LinearProgress variant="determinate" value={this.state.percentage} />
+							  <label htmlFor="optionOneProgress">{ this.props.currentQuestion.optionOne.text }</label>
+							  <LinearProgress id="optionOneProgress" variant="determinate" value={this.state.optionOnePercentage} />
+							  <p>{ this.state.optionOnePercentage }%</p>
+
+							  <label htmlFor="optionTwoProgress">{ this.props.currentQuestion.optionTwo.text }</label>
+							  <LinearProgress id="optionTwoProgress" color="secondary" variant="determinate" value={this.state.optionTwoPercentage} />
+							  <p>{ this.state.optionTwoPercentage }%</p>
 						  </CardContent>
 						</Card>
 			    	</div>
