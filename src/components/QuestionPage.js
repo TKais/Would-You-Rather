@@ -3,12 +3,16 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { createAnswer } from '../actions/shared';
 import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import '../assets/css/questionpage.css';
 
 class QuestionPage extends React.Component {
 	state = {
 		currentValue: '',
 		isAnswered: false,
+		percentage: 0,
 	}
 
 	componentDidMount() {
@@ -19,8 +23,23 @@ class QuestionPage extends React.Component {
 			(currentQuestion.optionOne.votes.indexOf( currentUser ) !== -1 ||
 		    currentQuestion.optionTwo.votes.indexOf( currentUser ) !== -1)
 		) {
-			this.setState({ isAnswered: true });
+			const result = this.calculatePercentage();
+
+			this.setState({ 
+				isAnswered: true,
+				percentage: result,
+			});
 		}
+	}
+
+	calculatePercentage = () => {
+		const optionOneVotes = this.props.currentQuestion.optionOne.votes.length;
+		const optionTwoVotes = this.props.currentQuestion.optionTwo.votes.length;
+		const totalVotes = optionOneVotes + optionTwoVotes;
+		const totalUsers = Object.keys(this.props.users).length;
+		const voteDecimal = (totalVotes / totalUsers) * 100;
+
+		return parseInt(voteDecimal.toFixed());
 	}
 
 	handleSubmit = (event) => {
@@ -30,10 +49,12 @@ class QuestionPage extends React.Component {
 		const { currentUser } = this.props;
 		const answer = { authedUser: currentUser, qid: id, answer: currentValue };
 		if( currentValue ) {
+			const result = this.calculatePercentage();
 			this.props.dispatch(createAnswer(answer));
 			this.setState( () => ({
 				currentValue: '',
 				isAnswered: true,
+				percentage: result,
 			}));
 		}
 	}
@@ -45,6 +66,7 @@ class QuestionPage extends React.Component {
 	}
 
 	render() {
+		console.log('??????????????', this.state);
 		if ( this.props.currentUser === null ) {
 	      return <Redirect to={{
                 pathname: '/error',
@@ -60,7 +82,15 @@ class QuestionPage extends React.Component {
 		return (
 			<div className="single-question">
 			    { this.state.isAnswered ? 
-			    	<div>Answered</div>
+			    	<div>
+			    	    <Card>
+						  <CardContent>
+						      <h3 className="single-question__author">{ `Asked by ${this.props.currentQuestion.author}` }</h3>
+							  <h4 className="single-question__title">Results:</h4>
+							  <LinearProgress variant="determinate" value={this.state.percentage} />
+						  </CardContent>
+						</Card>
+			    	</div>
 			    	:
 			    	<div>
 					    <h3 className="single-question__author">{ `${this.props.currentQuestion.author} asks...` }</h3>
