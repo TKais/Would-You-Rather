@@ -8,6 +8,19 @@ import '../assets/css/questionpage.css';
 class QuestionPage extends React.Component {
 	state = {
 		currentValue: '',
+		isAnswered: false,
+	}
+
+	componentDidMount() {
+		const currentQuestion = this.props.currentQuestion;
+		const currentUser = this.props.currentUser;
+
+		if( currentQuestion && 
+			(currentQuestion.optionOne.votes.indexOf( currentUser ) !== -1 ||
+		    currentQuestion.optionTwo.votes.indexOf( currentUser ) !== -1)
+		) {
+			this.setState({ isAnswered: true });
+		}
 	}
 
 	handleSubmit = (event) => {
@@ -20,6 +33,7 @@ class QuestionPage extends React.Component {
 			this.props.dispatch(createAnswer(answer));
 			this.setState( () => ({
 				currentValue: '',
+				isAnswered: true,
 			}));
 		}
 	}
@@ -45,21 +59,27 @@ class QuestionPage extends React.Component {
 
 		return (
 			<div className="single-question">
-			    <h3 className="single-question__author">{ `${this.props.currentQuestion.author} asks...` }</h3>
-			    <h4 className="single-question__title">Would You Rather:</h4>
-			    <form className="single-question__form" onSubmit={ this.handleSubmit } onChange={this.handleChange}>
-				    <input id="question1" type="radio" name="whichQuestion" value={this.state.currentValue || 'optionOne'} />
-				    <label htmlFor="question1">{this.props.currentQuestion.optionOne.text}</label>
-				    <p className="single-question__OR">OR</p>
-				    <input id="question2" type="radio" name="whichQuestion" value={this.state.currentValue || 'optionTwo'} />
-				    <label htmlFor="question2">{this.props.currentQuestion.optionTwo.text}</label>
-	    	        <Button
-				        variant="contained"
-				        color="primary"
-				        type="submit"
-				        className="single-question__button"
-				    >Submit</Button>
-			    </form>
+			    { this.state.isAnswered ? 
+			    	<div>Answered</div>
+			    	:
+			    	<div>
+					    <h3 className="single-question__author">{ `${this.props.currentQuestion.author} asks...` }</h3>
+					    <h4 className="single-question__title">Would You Rather:</h4>
+					    <form className="single-question__form" onSubmit={ this.handleSubmit } onChange={this.handleChange}>
+						    <input id="question1" type="radio" name="whichQuestion" value={this.state.currentValue || 'optionOne'} />
+						    <label htmlFor="question1">{this.props.currentQuestion.optionOne.text}</label>
+						    <p className="single-question__OR">OR</p>
+						    <input id="question2" type="radio" name="whichQuestion" value={this.state.currentValue || 'optionTwo'} />
+						    <label htmlFor="question2">{this.props.currentQuestion.optionTwo.text}</label>
+			    	        <Button
+						        variant="contained"
+						        color="primary"
+						        type="submit"
+						        className="single-question__button"
+						    >Submit</Button>
+					    </form>
+				    </div>
+				}
         	</div>
 		);
 	}
