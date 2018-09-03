@@ -39,7 +39,7 @@ class QuestionPage extends React.Component {
 		const totalUsers = Object.keys(this.props.users).length;
 		const voteDecimal = (totalVotes / totalUsers) * 100;
 
-		return parseInt(voteDecimal.toFixed());
+		return parseInt(voteDecimal.toFixed(1));
 	}
 
 	handleSubmit = (event) => {
