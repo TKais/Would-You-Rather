@@ -32,10 +32,10 @@ class QuestionPage extends React.Component {
 		}
 	}
 
-	calculatePercentage = () => {
+	calculatePercentage = ( submitMode ) => {
 		const optionOneVotes = this.props.currentQuestion.optionOne.votes.length;
 		const optionTwoVotes = this.props.currentQuestion.optionTwo.votes.length;
-		const totalVotes = optionOneVotes + optionTwoVotes;
+		const totalVotes = submitMode ? optionOneVotes + optionTwoVotes + 1 : optionOneVotes + optionTwoVotes;
 		const totalUsers = Object.keys(this.props.users).length;
 		const voteDecimal = (totalVotes / totalUsers) * 100;
 
@@ -49,7 +49,7 @@ class QuestionPage extends React.Component {
 		const { currentUser } = this.props;
 		const answer = { authedUser: currentUser, qid: id, answer: currentValue };
 		if( currentValue ) {
-			const result = this.calculatePercentage();
+			const result = this.calculatePercentage( true );
 			this.props.dispatch(createAnswer(answer));
 			this.setState( () => ({
 				currentValue: '',
@@ -66,7 +66,6 @@ class QuestionPage extends React.Component {
 	}
 
 	render() {
-		console.log('??????????????', this.state);
 		if ( this.props.currentUser === null ) {
 	      return <Redirect to={{
                 pathname: '/error',
