@@ -2,3 +2,8 @@
 	margin: 3rem;
 	font-family: sans-serif;
 }
+
+.main-app__container {
+	display: flex;
+	justify-content: center;
+}
