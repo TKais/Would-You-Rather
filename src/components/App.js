@@ -36,7 +36,7 @@ class App extends Component {
             <NavMenu />
             <CurrentUser />
             { this.configureRoutes() }
-            <div>
+            <div className="main-app__container">
               <Route path='/questions/:id' component={QuestionPage} />
               <Route path='/add' component={NewQuestion} />
               <Route path='/leaderboard' component={Leaderboard} />
