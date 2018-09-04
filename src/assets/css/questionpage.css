@@ -1,3 +1,8 @@
+.single-question { 
+	margin-top: 4rem;
+	width: 75%;
+}
+
 .single-question__button {
 	display: block !important;
 	background-color: #0099ff !important;
