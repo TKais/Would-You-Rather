@@ -108,7 +108,7 @@ class QuestionPage extends React.Component {
 								    </div>
 								  :
 								  <div className="single-question__block">
-									  <label className="single-question__label" htmlFor="optionOneProgress">{ this.props.currentQuestion.optionOne.text }</label>
+									  <label className="single-question__block-label" htmlFor="optionOneProgress">{ this.props.currentQuestion.optionOne.text }</label>
 									  <LinearProgress id="optionOneProgress" variant="determinate" value={ this.state.optionOnePercentage } />
 									  <p>
 									      <span>{ this.state.optionOnePercentage }%</span>
@@ -129,7 +129,7 @@ class QuestionPage extends React.Component {
 								    </div>
 								  :
 								  <div className="single-question__block">
-									  <label className="single-question__label" htmlFor="optionTwoProgress">{ this.props.currentQuestion.optionTwo.text }</label>
+									  <label className="single-question__block-label" htmlFor="optionTwoProgress">{ this.props.currentQuestion.optionTwo.text }</label>
 									  <LinearProgress id="optionTwoProgress" color="secondary" variant="determinate" value={ this.state.optionTwoPercentage } />
 									  <p>
 									      <span>{ this.state.optionTwoPercentage }%</span>

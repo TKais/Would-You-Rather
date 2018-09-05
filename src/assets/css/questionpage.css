@@ -26,6 +26,11 @@ label + span:hover {
 	margin-top: 3rem;
 }
 
+.single-question__block p > span {
+	margin-right: 2rem;
+}
+
 .single-question__block-label {
 	margin-right: 3rem;
+	text-transform: capitalize;
 }
