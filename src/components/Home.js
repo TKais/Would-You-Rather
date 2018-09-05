@@ -12,9 +12,11 @@ class Home extends React.Component {
 
 	generateAnsweredQuestions = () => {
 		const user = this.props.users[this.props.currentUser];
-		const answered = Object.keys(user.answers).map( (answer) => {
-			if( this.props.questions.indexOf(answer) !== -1 ) {
-				return answer;
+		const answered = this.props.questions.map( (question) => {
+			if( Object.keys(user.answers).indexOf(question) !== -1 ) {
+				return question;
+			} else {
+				return null;
 			}
 		});
 
@@ -78,7 +80,7 @@ class Home extends React.Component {
 function mapStateToProps({ questions, currentUser, users }) {
 	return {
 		currentUser: Object.values(currentUser).join(''),
-		questions: Object.keys(questions).sort( (a,b) => questions[a].timestamp - questions[b].timestamp ),
+		questions: Object.keys(questions).sort( (a,b) => questions[b].timestamp - questions[a].timestamp ),
 		users,
 	}
 }
