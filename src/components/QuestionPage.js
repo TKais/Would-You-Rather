@@ -29,8 +29,8 @@ class QuestionPage extends React.Component {
 
 			this.setState({ 
 				isAnswered: true,
-				optionOnePercentage: result.optOne,
-				optionTwoPercentage: result.optTwo,
+				optionOnePercentage: result.optOnePercentage,
+				optionTwoPercentage: result.optTwoPercentage,
 			});
 		}
 	}
@@ -43,8 +43,10 @@ class QuestionPage extends React.Component {
 		const voteDecimalTwo = (optionTwoVotes / totalUsers) * 100;
 
 		return {
-			optOne: parseInt(voteDecimalOne.toFixed(1)),
-			optTwo: parseInt(voteDecimalTwo.toFixed(1)),
+			optOnePercentage: parseInt(voteDecimalOne.toFixed(1)),
+			optOneNumOfVotes: optionOneVotes,
+			optTwoPercentage: parseInt(voteDecimalTwo.toFixed(1)),
+			optTwoNumOfVotes: optionTwoVotes,
 		}
 	}
 
@@ -99,29 +101,42 @@ class QuestionPage extends React.Component {
 									        <label className="single-question__block-label" htmlFor="optionOneProgress">{ this.props.currentQuestion.optionOne.text }</label>
 									    </Badge>
 									    <LinearProgress id="optionOneProgress" variant="determinate" value={ this.state.optionOnePercentage } />
+									    <p>
+									        <span>{ this.state.optionOnePercentage }%</span>
+									        <span>{ `${this.calculatePercentage().optOneNumOfVotes} out of ${Object.keys(this.props.users).length} votes` }</span>
+									    </p>
 								    </div>
 								  :
-								  <div>
+								  <div className="single-question__block">
 									  <label className="single-question__label" htmlFor="optionOneProgress">{ this.props.currentQuestion.optionOne.text }</label>
 									  <LinearProgress id="optionOneProgress" variant="determinate" value={ this.state.optionOnePercentage } />
+									  <p>
+									      <span>{ this.state.optionOnePercentage }%</span>
+									      <span>{ `${this.calculatePercentage().optOneNumOfVotes} out of ${Object.keys(this.props.users).length} votes` }</span>
+									  </p>
 								  </div>
 							  }
-							  <p>{ this.state.optionOnePercentage }%</p>
-
 							  { this.props.currentQuestion.optionTwo.votes.indexOf( this.props.currentUser ) !== -1 ?
 							  	    <div className="single-question__block">
 									    <Badge badgeContent="Your vote">
 									        <label className="single-question__block-label" htmlFor="optionTwoProgress">{ this.props.currentQuestion.optionTwo.text }</label>
 									    </Badge>
 									    <LinearProgress id="optionTwoProgress" variant="determinate" color="secondary" value={ this.state.optionTwoPercentage } />
+									    <p>
+									      <span>{ this.state.optionTwoPercentage }%</span>
+									      <span>{ `${this.calculatePercentage().optTwoNumOfVotes} out of ${Object.keys(this.props.users).length} votes` }</span>
+									  </p>
 								    </div>
 								  :
-								  <div>
+								  <div className="single-question__block">
 									  <label className="single-question__label" htmlFor="optionTwoProgress">{ this.props.currentQuestion.optionTwo.text }</label>
 									  <LinearProgress id="optionTwoProgress" color="secondary" variant="determinate" value={ this.state.optionTwoPercentage } />
+									  <p>
+									      <span>{ this.state.optionTwoPercentage }%</span>
+									      <span>{ `${this.calculatePercentage().optTwoNumOfVotes} out of ${Object.keys(this.props.users).length} votes` }</span>
+									  </p>
 								  </div>
 							  }
-							  <p>{ this.state.optionTwoPercentage }%</p>
 						  </CardContent>
 						</Card>
 			    	</div>
