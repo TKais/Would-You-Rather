@@ -34,3 +34,11 @@ label + span:hover {
 	margin-right: 3rem;
 	text-transform: capitalize;
 }
+
+.single-question__form label {
+	display: inline-block;
+}
+
+.single-question__form label::first-letter {
+	text-transform: capitalize;
+}
