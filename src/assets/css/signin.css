@@ -4,6 +4,10 @@
 	margin-top: 6rem;
 }
 
+.signin > div {
+	width: 17rem;
+}
+
 .signin__header {
 	padding: 6rem;
 }
