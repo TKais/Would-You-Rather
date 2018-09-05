@@ -62,8 +62,8 @@ class QuestionPage extends React.Component {
 			this.setState( () => ({
 				currentValue: '',
 				isAnswered: true,
-				optionOnePercentage: result.optOne,
-				optionTwoPercentage: result.optTwo,
+				optionOnePercentage: result.optOnePercentage,
+				optionTwoPercentage: result.optTwoPercentage,
 			}));
 		}
 	}
