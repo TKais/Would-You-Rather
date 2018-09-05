@@ -7,10 +7,10 @@ function QuestionList(props){
 		<div className="questionlist">
 		    <ul className="questionlist__menu">
 		        { props.questions ? 
-		            Object.keys(props.questions).map( (question) => {
-		            	if( props.questions[question] !== null ) {
+		            props.questions.map( (question) => {
+		            	if( question !== null ) {
 				        	return (
-				        		<Question question={props.questions[question]} key={props.questions[question].id} />
+				        		<Question question={question} />
 			        		);
 				        }
 		          }) :

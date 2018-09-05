@@ -5,7 +5,8 @@ import '../assets/css/question.css';
 
 class Question extends React.Component {
 	getRoute = (question) => {
-		return `questions/${question.id}`;
+		const id = this.props.questions[this.props.question].id;
+		return `questions/${id}`;
 	}
 
 	formatName = (question) => {
@@ -17,12 +18,12 @@ class Question extends React.Component {
 
 	render() {
 		return (
-			<li className="questionlist__menu-item" key={this.props.key}>
-			    <h3 className="questionlist__menu-item-author">{ `${this.formatName(this.props.question)} asks...` }</h3>
+			<li className="questionlist__menu-item" key={this.props.questions[this.props.question].id}>
+			    <h3 className="questionlist__menu-item-author">{ `${this.formatName(this.props.questions[this.props.question])} asks...` }</h3>
 			    <h4 className="questionlist__menu-item-title">Would You Rather:</h4>
-			    <p className="questionlist__menu-item-option">{this.props.question.optionOne.text}</p>
+			    <p className="questionlist__menu-item-option">{this.props.questions[this.props.question].optionOne.text}</p>
 			    <p className="questionlist__menu-item-OR">OR</p>
-			    <p className="questionlist__menu-item-option">{this.props.question.optionTwo.text}</p>
+			    <p className="questionlist__menu-item-option">{this.props.questions[this.props.question].optionTwo.text}</p>
     	        <NavLink to={this.getRoute(this.props.question)} exact className='questionlist__menu-item-anchor'><span>View Poll</span></NavLink>
         	</li>
 		);
