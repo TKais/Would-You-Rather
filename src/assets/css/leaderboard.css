@@ -5,6 +5,7 @@
 
 .leaderboard > div {
 	position: relative;
+	margin-bottom: 1.5rem;
 }
 
 .leaderboard > div img {
