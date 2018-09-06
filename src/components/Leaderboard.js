@@ -1,22 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import ScoreCard from './ScoreCard';
 
 class Leaderboard extends React.Component {
 	render() {
 		if (  this.props.currentUser === null ) {
-	      return <Redirect to='/' />
+	      return <Redirect to={{
+                pathname: '/error',
+                state: { errorType: '401' }
+            }} />
 	    }
 
 		return (
-			<div>Leaderboard</div>
+			<div className="leaderboard">
+			    <ScoreCard />
+			</div>
 		);
 	}
 }
 
-function mapStateToProps({ currentUser }) {
+function mapStateToProps({ currentUser, questions, users }) {
 	return {
-		currentUser: currentUser ? Object.values(currentUser).join('') : null
+		currentUser: currentUser ? Object.values(currentUser).join('') : null,
+		questions,
+		users,
 	}
 }
 
