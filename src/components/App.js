@@ -36,12 +36,10 @@ class App extends Component {
             <NavMenu />
             <CurrentUser />
             { this.configureRoutes() }
-            <div className="main-app__container">
-              <Route path='/questions/:id' component={QuestionPage} />
-              <Route path='/add' component={NewQuestion} />
-              <Route path='/leaderboard' component={Leaderboard} />
-              <Route path='/error' component={Error} />
-            </div>
+            <Route path='/questions/:id' component={QuestionPage} />
+            <Route path='/add' component={NewQuestion} />
+            <Route path='/leaderboard' component={Leaderboard} />
+            <Route path='/error' component={Error} />
           </div>
         </Fragment>
       </Router>
