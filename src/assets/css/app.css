@@ -1,4 +1,9 @@
 .main-app {
+	position: relative;
 	margin: 3rem;
 	font-family: sans-serif;
+}
+
+.main-app__container {
+	width: 100%;
 }
