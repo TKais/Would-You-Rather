@@ -10,7 +10,7 @@ function QuestionList(props){
 		            props.questions.map( (question) => {
 		            	if( question !== null ) {
 				        	return (
-				        		<Question question={question} />
+				        		<Question question={question} key={question} />
 			        		);
 				        }
 		          }) :
