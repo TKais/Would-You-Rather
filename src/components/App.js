@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import '../assets/css/app.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { getAllData } from '../actions/shared';
-import { LoadingBar } from 'react-redux-loading';
 import NavMenu from './NavMenu';
 import Home from './Home';
 import SignIn from './SignIn';
@@ -31,15 +30,16 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          <LoadingBar />
           <div className='main-app'>
             <NavMenu />
             <CurrentUser />
-            { this.configureRoutes() }
-            <Route path='/questions/:id' component={QuestionPage} />
-            <Route path='/add' component={NewQuestion} />
-            <Route path='/leaderboard' component={Leaderboard} />
-            <Route path='/error' component={Error} />
+            <div className="main-app__container">
+              { this.configureRoutes() }
+              <Route path='/questions/:id' component={QuestionPage} />
+              <Route path='/add' component={NewQuestion} />
+              <Route path='/leaderboard' component={Leaderboard} />
+              <Route path='/error' component={Error} />
+            </div>
           </div>
         </Fragment>
       </Router>
@@ -49,7 +49,6 @@ class App extends Component {
 
 function mapStateToProps ({ currentUser, users }) {
   return {
-    loading: currentUser === null,
     currentUser,
     users
   }
