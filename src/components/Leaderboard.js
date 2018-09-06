@@ -14,7 +14,9 @@ class Leaderboard extends React.Component {
 
 		return (
 			<div className="leaderboard">
-			    <ScoreCard />
+			    { this.props.sortedUsers.map( (user) => ( 
+				    <ScoreCard user={this.props.users[user]} />
+			    ))}
 			</div>
 		);
 	}
@@ -24,6 +26,7 @@ function mapStateToProps({ currentUser, questions, users }) {
 	return {
 		currentUser: currentUser ? Object.values(currentUser).join('') : null,
 		questions,
+		sortedUsers: Object.keys(users).sort( (a,b) => (users[b].questions.length + Object.keys(users[b].answers).length) - (users[a].questions.length + Object.keys(users[a].answers).length)),
 		users,
 	}
 }
