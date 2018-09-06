@@ -1,0 +1,16 @@
+.leaderboard {
+	margin-top: 4rem;
+	width: 75%;
+}
+
+.leaderboard > div {
+	position: relative;
+}
+
+.leaderboard > div img {
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	border: 1px solid #000000;
+}

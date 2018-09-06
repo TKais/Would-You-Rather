@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import ScoreCard from './ScoreCard';
+import '../assets/css/leaderboard.css';
 
 class Leaderboard extends React.Component {
 	render() {
