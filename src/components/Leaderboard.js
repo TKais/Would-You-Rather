@@ -15,7 +15,7 @@ class Leaderboard extends React.Component {
 		return (
 			<div className="leaderboard">
 			    { this.props.sortedUsers.map( (user) => ( 
-				    <ScoreCard user={this.props.users[user]} />
+				    <ScoreCard user={this.props.users[user]} key={this.props.users[user].id} />
 			    ))}
 			</div>
 		);
