@@ -10,6 +10,14 @@
 	margin-top: 2rem !important;
 }
 
+.single-question__image {
+	width: 13rem;
+	max-width: 100%;
+	height: auto;
+	float: left;
+	margin-right: 2rem;
+}
+
 label + span {
     padding: .5rem;
     right: 0 !important;

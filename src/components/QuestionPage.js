@@ -142,7 +142,8 @@ class QuestionPage extends React.Component {
 			    	</div>
 			    	:
 			    	<div>
-					    <h3 className="single-question__author">{ `${this.props.currentQuestion.author} asks...` }</h3>
+					    <h3 className="single-question__author">{ `${this.props.users[this.props.currentQuestion.author].name} asks...` }</h3>
+					    <img className="single-question__image" src={this.props.users[this.props.currentQuestion.author].avatarURL} alt={this.props.users[this.props.currentQuestion.author].name} />
 					    <h4 className="single-question__title">Would You Rather:</h4>
 					    <form className="single-question__form" onSubmit={ this.handleSubmit } onChange={this.handleChange}>
 						    <input id="question1" type="radio" name="whichQuestion" value={this.state.currentValue || 'optionOne'} />
