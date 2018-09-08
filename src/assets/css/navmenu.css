@@ -1,21 +1,32 @@
 .navmenu {
-	border-bottom: 2px solid #CCCCCC;
+	border-bottom: 2px solid #FFFFFF;
 }
 
 .navmenu__list {
 	display: flex;
     flex-direction: row;
 	list-style-type: none;
-    justify-content: space-between;
+	padding: 0;
+    align-items: baseline;
+}
+
+.navmenu__list li:not(.navmenu__list-logo) {
+	margin-left: 4rem;
+}
+
+.navmenu__list-logo {
+	margin-right: auto;
+}
+
+.navmenu__list-logo img {
+	margin-bottom: -4px;
 }
 
 .navmenu li a {
 	text-decoration: none;
-	color: #000000;
-	padding: 10px;
+	color: #FFFFFF;
 }
 
 .navmenu li a:hover {
-	background-color: #0099ff;
-	color: #FFFFFF;
+	color: #4682B4;
 }

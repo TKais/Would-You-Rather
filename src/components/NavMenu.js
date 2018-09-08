@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import '../assets/css/navmenu.css';
+import * as Logo from '../assets/images/logo.png';
 import { setCurrentUser } from '../actions/currentUser';
 import Snackbar from '@material-ui/core/Snackbar';
 
@@ -51,6 +52,7 @@ class NavMenu extends React.Component {
 		return (
 			<nav className="navmenu">
 			    <ul className="navmenu__list" onClick={this.handleClick}>
+				    <li className="navmenu__list-logo"><img src={ Logo } /></li>
 			        <li><NavLink to={this.currentUserIsDefined('/')} exact activeClassName='active home'>Home</NavLink></li>
 			        <li><NavLink to={this.currentUserIsDefined('/add')} activeClassName='active add'>New Question</NavLink></li>
 			        <li><NavLink to={this.currentUserIsDefined('/leaderboard')} activeClassName='active leaderboard'>Leaderboard</NavLink></li>
