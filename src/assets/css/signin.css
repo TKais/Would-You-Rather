@@ -30,6 +30,10 @@
 	color: #ED1E79 !important;
 }
 
+.signin__select div {
+	color: #3FA5AA !important;
+}
+
 .signin__select label, svg {
 	color: #FFFFFF !important;
 }
