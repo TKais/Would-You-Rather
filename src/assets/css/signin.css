@@ -19,7 +19,7 @@
 }
 
 .signin__select {
-	width: 85%;
+	width: 90%;
 	margin-left: 1rem !important;
 	margin-right: 1rem !important;
 	margin-bottom: 3rem !important;
@@ -44,7 +44,7 @@
 }
 
 .signin__button {
-	width: 85%;
+	width: 90%;
 	margin: 1rem !important;
 	background-color: #ED1E79 !important;
 	font-weight: 100;
