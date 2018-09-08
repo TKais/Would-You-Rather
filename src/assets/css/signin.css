@@ -4,12 +4,18 @@
 	margin-top: 6rem;
 }
 
+.signin__body {
+	background-color: #20255B !important;
+	border-radius: .5rem !important;
+}
+
 .signin > div {
 	width: 17rem;
 }
 
 .signin__header {
 	padding: 6rem;
+	color: #FFFFFF !important;
 }
 
 .signin__select {
@@ -17,10 +23,25 @@
 	margin-left: 1rem !important;
 	margin-right: 1rem !important;
 	margin-bottom: 3rem !important;
+	color: #FFFFFF !important;
 }
+
+.MuiInput-underline-85:before:hover {
+	color: #ED1E79 !important;
+}
+
+.signin__select label, svg {
+	color: #FFFFFF !important;
+}
+
+.signin__select > div:before {
+	border-bottom: 1px solid #FFFFFF;
+	transition: none !important;
+} 
 
 .signin__button {
 	width: 85%;
 	margin: 1rem !important;
-	background-color: #0099ff !important;
+	background-color: #ED1E79 !important;
+	font-weight: 100;
 }

@@ -29,7 +29,7 @@ class SignIn extends React.Component {
 	render() {
 		return (
 			<div className="signin">
-				<Paper elevation={1}>
+				<Paper className="signin__body" elevation={1}>
 				  <Typography variant="headline" component="h3" className="signin__header">
 		            Sign In
 		          </Typography>
@@ -53,7 +53,7 @@ class SignIn extends React.Component {
 			        color="primary"
 			        className="signin__button"
 			        onClick={this.handleClick}
-			      >Sign In</Button>
+			      >Enter</Button>
 				</Paper>
 			</div>
 		);
