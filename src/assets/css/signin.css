@@ -26,10 +26,6 @@
 	color: #FFFFFF !important;
 }
 
-.MuiInput-underline-85:before:hover {
-	color: #ED1E79 !important;
-}
-
 .signin__select div {
 	color: #3FA5AA !important;
 }
@@ -39,9 +35,13 @@
 }
 
 .signin__select > div:before {
-	border-bottom: 1px solid #FFFFFF;
+	border-bottom: 1px solid #FFFFFF !important;
 	transition: none !important;
-} 
+}
+
+.MuiInput-underline-85:after {
+	border-color: #FFFFFF !important;
+}
 
 .signin__button {
 	width: 85%;
