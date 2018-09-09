@@ -9,8 +9,15 @@
 }
 
 .home-component__buttons--answered, .home-component__buttons--unanswered {
-	background-color: #0099ff !important;
-	border: 3px solid #0099ff !important;
+	background-color: #1E2356 !important;
+	border: 3px solid #1E2356 !important;
+	padding-right: 4rem !important;
+	padding-left: 4rem !important;
+}
+
+.home-component__buttons--answered > span, .home-component__buttons--unanswered > span {
+	font-weight: 100;
+	text-transform: capitalize;
 }
 
 .home-component__buttons--unanswered {
@@ -27,8 +34,9 @@
 
 .home-component__buttons--answered:hover, .home-component__buttons--unanswered:hover {
 	background-color: #006bb2 !important;
+	border-color: #006bb2 !important;
 }
 
 .home-component__buttons--unanswered-active, .home-component__buttons--answered-active {
-	border: 3px solid #005b99 !important;
+	border: 2px solid #29ABE3 !important;
 }

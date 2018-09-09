@@ -2,6 +2,8 @@
 	margin-top: 2rem;
 	display: flex;
 	justify-content: center;
+	color: #FFFFFF !important;
+	font-weight: 100;
 }
 
 .questionlist__menu {
