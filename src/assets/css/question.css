@@ -3,6 +3,8 @@
     margin-bottom: 1rem;
     background-color: #1E2356;
     border-radius: 5px;
+    width: 16rem;
+    height: 16rem;
 }
 
 .questionlist__menu-item-anchor {
