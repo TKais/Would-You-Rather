@@ -1,16 +1,17 @@
 .questionlist__menu-item {
-    border: 1px solid #666666;
-    padding: 1rem;
+    padding: 2rem 3rem;
     margin-bottom: 1rem;
+    background-color: #1E2356;
+    border-radius: 5px;
 }
 
 .questionlist__menu-item-anchor {
 	display: block;
-	border: 1px solid #666666;
 	padding: 0.5rem;
+	background-color: #ED1E79 !important;
+	font-weight: 100;
 	text-decoration: none;
 	color: #FFFFFF;
-	background-color: #0099ff;
 	margin: 0 auto;
 	border-radius: 4px;
 }
@@ -26,12 +27,15 @@
 }
 
 .questionlist__menu-item-author {
-	border-bottom: 1px solid #666666;
+	border-bottom: 1px solid #FFFFFF;
 	margin-bottom: 2rem;
+	font-weight: 400;
 }
 
 .questionlist__menu-item-title {
 	text-align: center;
+	font-size: .75rem;
+	color: #29ABE3;
 }
 
 .questionlist__menu-item-option::first-letter {
