@@ -93,12 +93,12 @@ class QuestionPage extends React.Component {
 			    	<div>
 			    	    <Card>
 						  <CardContent>
-						      <h3 className="single-question__author">{ `Asked by ${this.props.currentQuestion.author}` }</h3>
-							  <h4 className="single-question__title">Results:</h4>
+						      <h3 className="single-question__author--answered">{ `Asked by ${this.props.users[this.props.currentQuestion.author].name}` }</h3>
+							  <h4 className="single-question__title--answered">Results:</h4>
 							  { this.props.currentQuestion.optionOne.votes.indexOf( this.props.currentUser ) !== -1 ?
-							  	    <div className="single-question__block">
+							  	    <div className="single-question__block--answered">
 									    <Badge badgeContent="Your vote">
-									        <label className="single-question__block-label" htmlFor="optionOneProgress">{ this.props.currentQuestion.optionOne.text }</label>
+									        <label className="single-question__block-label--answered" htmlFor="optionOneProgress">{ this.props.currentQuestion.optionOne.text }</label>
 									    </Badge>
 									    <LinearProgress id="optionOneProgress" variant="determinate" value={ this.state.optionOnePercentage } />
 									    <p>
@@ -107,8 +107,8 @@ class QuestionPage extends React.Component {
 									    </p>
 								    </div>
 								  :
-								  <div className="single-question__block">
-									  <label className="single-question__block-label" htmlFor="optionOneProgress">{ this.props.currentQuestion.optionOne.text }</label>
+								  <div className="single-question__block--answered">
+									  <label className="single-question__block-label--answered" htmlFor="optionOneProgress">{ this.props.currentQuestion.optionOne.text }</label>
 									  <LinearProgress id="optionOneProgress" variant="determinate" value={ this.state.optionOnePercentage } />
 									  <p>
 									      <span>{ this.state.optionOnePercentage }%</span>
@@ -117,9 +117,9 @@ class QuestionPage extends React.Component {
 								  </div>
 							  }
 							  { this.props.currentQuestion.optionTwo.votes.indexOf( this.props.currentUser ) !== -1 ?
-							  	    <div className="single-question__block">
+							  	    <div className="single-question__block--answered">
 									    <Badge badgeContent="Your vote">
-									        <label className="single-question__block-label" htmlFor="optionTwoProgress">{ this.props.currentQuestion.optionTwo.text }</label>
+									        <label className="single-question__block-label--answered" htmlFor="optionTwoProgress">{ this.props.currentQuestion.optionTwo.text }</label>
 									    </Badge>
 									    <LinearProgress id="optionTwoProgress" variant="determinate" color="secondary" value={ this.state.optionTwoPercentage } />
 									    <p>
@@ -128,8 +128,8 @@ class QuestionPage extends React.Component {
 									  </p>
 								    </div>
 								  :
-								  <div className="single-question__block">
-									  <label className="single-question__block-label" htmlFor="optionTwoProgress">{ this.props.currentQuestion.optionTwo.text }</label>
+								  <div className="single-question__block--answered">
+									  <label className="single-question__block-label--answered" htmlFor="optionTwoProgress">{ this.props.currentQuestion.optionTwo.text }</label>
 									  <LinearProgress id="optionTwoProgress" color="secondary" variant="determinate" value={ this.state.optionTwoPercentage } />
 									  <p>
 									      <span>{ this.state.optionTwoPercentage }%</span>
@@ -142,20 +142,20 @@ class QuestionPage extends React.Component {
 			    	</div>
 			    	:
 			    	<div>
-					    <h3 className="single-question__author">{ `${this.props.users[this.props.currentQuestion.author].name} asks...` }</h3>
-					    <img className="single-question__image" src={this.props.users[this.props.currentQuestion.author].avatarURL} alt={this.props.users[this.props.currentQuestion.author].name} />
-					    <h4 className="single-question__title">Would You Rather:</h4>
-					    <form className="single-question__form" onSubmit={ this.handleSubmit } onChange={this.handleChange}>
+					    <h3 className="single-question__author--unanswered">{ `${this.props.users[this.props.currentQuestion.author].name} asks...` }</h3>
+					    <img className="single-question__image--unanswered" src={this.props.users[this.props.currentQuestion.author].avatarURL} alt={this.props.users[this.props.currentQuestion.author].name} />
+					    <h4 className="single-question__title--unanswered">Would You Rather:</h4>
+					    <form className="single-question__form--unanswered" onSubmit={ this.handleSubmit } onChange={this.handleChange}>
 						    <input id="question1" type="radio" name="whichQuestion" value={this.state.currentValue || 'optionOne'} />
 						    <label htmlFor="question1">{this.props.currentQuestion.optionOne.text}</label>
-						    <p className="single-question__OR">OR</p>
+						    <p className="single-question__OR--unanswered">OR</p>
 						    <input id="question2" type="radio" name="whichQuestion" value={this.state.currentValue || 'optionTwo'} />
 						    <label htmlFor="question2">{this.props.currentQuestion.optionTwo.text}</label>
 			    	        <Button
 						        variant="contained"
 						        color="primary"
 						        type="submit"
-						        className="single-question__button"
+						        className="single-question__button--unanswered"
 						    >Submit</Button>
 					    </form>
 				    </div>
