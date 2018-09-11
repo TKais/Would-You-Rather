@@ -91,7 +91,7 @@ class QuestionPage extends React.Component {
 			<div className="single-question">
 			    { this.state.isAnswered ? 
 			    	<div>
-			    	    <Card>
+			    	    <Card className="single-question__card">
 						  <CardContent>
 						      <h3 className="single-question__author--answered">{ `Asked by ${this.props.users[this.props.currentQuestion.author].name}` }</h3>
 							  <h4 className="single-question__title--answered">Results:</h4>

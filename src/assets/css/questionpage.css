@@ -11,6 +11,13 @@
     font-weight: 100;
 }
 
+.single-question__card {
+	background-color: #1E2356 !important;
+	color: #FFFFFF;
+	box-shadow: none !important;
+	font-weight: 100;
+}
+
 .single-question__author--unanswered {
 	font-weight: 400;
 	border-bottom: 1px solid #FFFFFF;
@@ -49,7 +56,7 @@ label + span {
     right: 0 !important;
     top: -21px !important;
     background-color: goldenrod !important;
-    color: #585858;
+    color: #000000;
 }
 
 .single-question__OR--unanswered {
