@@ -1,11 +1,11 @@
 .scorecard {
 	position: relative;
-	margin-bottom: 1.5rem;
-	max-width: 100%;
+	width: 100%;
 	background-color: #1E2356 !important;
 	border-radius: 5px;
 	color: #FFFFFF;
 	font-weight: 100;
+	margin: 0 auto 1.5rem;
 }
 
 .scorecard h3 {
@@ -39,6 +39,7 @@
 	.scorecard {
 		display: inline-block;
 		padding: 1rem 2rem;
+		width: 50%;
 	}
 
 	.scorecard img {
@@ -46,5 +47,11 @@
 		bottom: 0;
 		top: 0;
 		transform: none;
+	}
+}
+
+@media (min-width: 922px) {
+	.scorecard {
+		width: 60%;
 	}
 }
