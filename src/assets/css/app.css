@@ -9,3 +9,9 @@
 	display: flex;
 	justify-content: center;
 }
+
+.main-app__loading-bar {
+	height: 5px;
+	background-color: #ED1E79;
+	position: absolute;
+}
