@@ -1,4 +1,5 @@
 import { _saveQuestion } from '../data/_DATA';
+import { showLoading, hideLoading } from 'react-redux-loading';
 
 export const GET_QUESTIONS = 'GET_QUESTIONS';
 export const CREATE_QUESTION = 'CREATE_QUESTION';
@@ -27,7 +28,9 @@ export function submitAnswer(answer) {
 
 export function createQuestion(question) {
 	return (dispatch) => {
+		dispatch(showLoading())
 		return _saveQuestion(question)
-		    .then( (data) => dispatch(submitQuestion(data)) )
+		    .then( (data) => dispatch(submitQuestion(data)))
+		    .then(() => dispatch(hideLoading()))
 	}
 }
