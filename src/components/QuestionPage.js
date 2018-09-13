@@ -43,9 +43,9 @@ class QuestionPage extends React.Component {
 		const voteDecimalTwo = (optionTwoVotes / totalUsers) * 100;
 
 		return {
-			optOnePercentage: parseInt(voteDecimalOne.toFixed(1)),
+			optOnePercentage: parseInt(voteDecimalOne.toFixed(1), 10),
 			optOneNumOfVotes: optionOneVotes,
-			optTwoPercentage: parseInt(voteDecimalTwo.toFixed(1)),
+			optTwoPercentage: parseInt(voteDecimalTwo.toFixed(1), 10),
 			optTwoNumOfVotes: optionTwoVotes,
 		}
 	}

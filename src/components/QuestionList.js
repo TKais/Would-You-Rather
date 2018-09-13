@@ -13,8 +13,8 @@ function QuestionList(props){
 				        		<Question question={question} key={question} />
 			        		);
 				        }
-		          }) :
-		          null
+		            }) 
+		            : null
 		        }
 		    </ul>
 		</div>
