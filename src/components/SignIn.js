@@ -23,7 +23,9 @@ class SignIn extends React.Component {
 	handleClick = () => {
 		const val = this.state.val;
 		const id = val.toLowerCase().replace(/\s/g, '');
-		this.props.dispatch(setCurrentUser(id));
+		if ( this.state.val ) {
+			this.props.dispatch(setCurrentUser(id));
+		}
 	}
 
 	render() {
