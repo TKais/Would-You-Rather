@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import '../assets/css/app.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import LoadingBar from 'react-redux-loading';
 import { getAllData } from '../actions/shared';
 import NavMenu from './NavMenu';
 import Home from './Home';
@@ -33,6 +34,7 @@ class App extends Component {
           <div className='main-app'>
             <NavMenu />
             <CurrentUser />
+            <LoadingBar className="main-app__loading-bar" />
             <div className="main-app__container">
               { this.configureRoutes() }
               <Route path='/questions/:id' component={QuestionPage} />
