@@ -21,9 +21,15 @@
 }
 
 #option-one, #option-two {
-	margin-bottom: 2rem;
+	margin: .5rem 0 2rem 0;
 	display: block;
 	width: 100%;
+	border: 1px solid white;
+}
+
+#option-one:focus, #option-two:focus {
+	outline: 1px dashed #FFFFFF;
+	outline-offset: 1px;
 }
 
 .new-question__form-button {
