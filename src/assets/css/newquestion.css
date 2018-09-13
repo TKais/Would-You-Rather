@@ -1,15 +1,32 @@
 .new-question {
-	margin-top: 4rem;
-	width: 75%;
+	margin: 5rem auto 0;
+	width: 16rem;
+	padding: 2rem 3rem;
+	background-color: #1E2356;
+	border-radius: 5px;
+	color: #FFFFFF;
+	font-weight: 100;
+}
+
+.new-question h2 {
+	font-weight: 400;
+	border-bottom: 1px solid #FFFFFF;
+}
+
+.new-question p {
+	text-align: center;
+	font-size: .90rem;
+	color: #29ABE3;
+	margin-bottom: 2rem;
 }
 
 #option-one, #option-two {
-	margin-bottom: 1rem;
+	margin-bottom: 2rem;
 	display: block;
-	width: 50%;
+	width: 100%;
 }
 
 .new-question__form-button {
-	width: 50%;
-	background-color: #0099ff !important;
+	width: 100%;
+	background-color: #ED1E79 !important;
 }
