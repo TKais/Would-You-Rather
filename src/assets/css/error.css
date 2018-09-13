@@ -1,0 +1,30 @@
+.error {
+	margin-top: 3rem;
+	color: #FFFFFF;
+	background-color: #1E2356;
+	width: 60%;
+	border-radius: 5px;
+	padding: 1rem 3rem;
+}
+
+.error__content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.error h1:before, .error h1:after {
+	content: '\2620';
+}
+
+.error h1:before {
+	margin-right: 1rem;
+}
+
+.error h1:after {
+	margin-left: 1rem;
+}
+
+.error__content-link {
+	color: #29ABE3;
+}
