@@ -23,8 +23,9 @@
 #option-one, #option-two {
 	margin: .5rem 0 2rem 0;
 	display: block;
-	width: 100%;
+	width: 90%;
 	border: 1px solid white;
+	padding: .25rem .5rem;
 }
 
 #option-one:focus, #option-two:focus {
