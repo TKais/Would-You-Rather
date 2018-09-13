@@ -82,10 +82,16 @@ label + span:hover {
 
 .single-question__form--unanswered {
 	color: #FFFFFF;
+}
+
+.single-question__form--unanswered label, .single-question__form--answered label, .single-question__block-label--answered {
+	display: inline-block;
+}
+
+.single-question__form--unanswered label:first-letter, .single-question__form--answered label:first-letter, .single-question__block-label--answered label:first-letter, .single-question__block-label--answered:first-letter {
 	text-transform: capitalize;
 }
 
 .single-question__block-label--answered {
-	margin-right: 3rem;
-	text-transform: capitalize;
+	margin-right: 3rem
 }
