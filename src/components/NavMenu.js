@@ -52,7 +52,7 @@ class NavMenu extends React.Component {
 		return (
 			<nav className="navmenu">
 			    <ul className="navmenu__list" onClick={this.handleClick}>
-				    <li className="navmenu__list-logo"><img src={ Logo } /></li>
+				    <li className="navmenu__list-logo"><NavLink to={this.currentUserIsDefined('/')} exact activeClassName='active home'><img src={ Logo } /></NavLink></li>
 			        <li><NavLink to={this.currentUserIsDefined('/')} exact activeClassName='active home'>Home</NavLink></li>
 			        <li><NavLink to={this.currentUserIsDefined('/add')} activeClassName='active add'>New Question</NavLink></li>
 			        <li><NavLink to={this.currentUserIsDefined('/leaderboard')} activeClassName='active leaderboard'>Leaderboard</NavLink></li>
