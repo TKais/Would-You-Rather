@@ -11,7 +11,8 @@
 }
 
 .main-app__loading-bar {
-	height: 5px;
+	height: 10px;
 	background-color: #ED1E79;
 	position: absolute;
+	/*margin-top: 2rem;*/
 }
