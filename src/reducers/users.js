@@ -1,13 +1,13 @@
 import { GET_USERS, ADD_USER_ANSWER } from '../actions/users';
 
 export function users(state = {}, action) {
-	switch(action.type) {
-		case GET_USERS:
+  switch(action.type) {
+  case GET_USERS:
 		    return {
 		    	...state,
 		    	...action.users,
-		    }
-		case ADD_USER_ANSWER:
+		    };
+  case ADD_USER_ANSWER:
 		    const { answer } = action;
 		    const answerObject = state[answer.authedUser].answers;
 		    const newAnswer = { [answer.qid]: answer.answer };
@@ -18,13 +18,13 @@ export function users(state = {}, action) {
 			    		...state[answer.authedUser],
 			    		answers: Object.assign({}, answerObject, newAnswer ),
 			    	}
-			    }
+			    };
 		    }
 		    return {
 		    	...state,
 		    	...newAnswerState,
-		    }
-		default:
-		    return state
-	}
+		    };
+  default:
+		    return state;
+  }
 }
