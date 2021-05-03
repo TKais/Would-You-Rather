@@ -4,8 +4,8 @@ An app for playing the game "Would You Rather."
 
 ## Starting the Application
 
-* Run `yarn install` or `npm install`
-* Run `yarn start` or `npm start`
+* Run `npm install`
+* Run `npm start`
 * Navigate to localhost:3000 in a browser
 
 ## Technical Details
