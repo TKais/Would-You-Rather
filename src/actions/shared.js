@@ -6,21 +6,21 @@ import { showLoading, hideLoading } from 'react-redux-loading';
 
 // Uses Thunk pattern for async data
 export function getAllData() {
-	return (dispatch) => {
-		return getInitialData()
-		    .then( (data) => {
-		    	dispatch( UserActions.getUsers(data.users));
-		    	dispatch( QuestionActions.getQuestions(data.questions));
-		    });
-	} 
+  return (dispatch) => {
+    return getInitialData()
+      .then( (data) => {
+        dispatch( UserActions.getUsers(data.users));
+        dispatch( QuestionActions.getQuestions(data.questions));
+      });
+  }; 
 }
 
 export function createAnswer(answer) {
-	return (dispatch) => {
-		dispatch(showLoading())
-		return _saveQuestionAnswer(answer)
-		    .then( () => dispatch(QuestionActions.submitAnswer(answer)) )
-		    .then( () => dispatch(UserActions.addUserAnswer(answer)) )
-		    .then( () => dispatch(hideLoading()) )
-	}
+  return (dispatch) => {
+    dispatch(showLoading());
+    return _saveQuestionAnswer(answer)
+      .then( () => dispatch(QuestionActions.submitAnswer(answer)) )
+      .then( () => dispatch(UserActions.addUserAnswer(answer)) )
+      .then( () => dispatch(hideLoading()) );
+  };
 }
