@@ -11,26 +11,26 @@ import Button from '@material-ui/core/Button';
 class SignIn extends React.Component {
 
 	state = {
-		val: ''
+	  val: ''
 	}
 
 	handleChange = (e) => {
-		const value = e.target.value;
-		this.setState({ val: value });
+	  const value = e.target.value;
+	  this.setState({ val: value });
 	}
 
 	handleClick = () => {
-		const val = this.state.val;
-		const id = val.toLowerCase().replace(/\s/g, '');
-		if ( this.state.val ) {
-			this.props.dispatch(setCurrentUser(id));
-		}
+	  const val = this.state.val;
+	  const id = val.toLowerCase().replace(/\s/g, '');
+	  if ( this.state.val ) {
+	    this.props.dispatch(setCurrentUser(id));
+	  }
 	}
 
 	render() {
-		return (
-			<div className="signin">
-				<Paper className="signin__body" elevation={1}>
+	  return (
+	    <div className="signin">
+	      <Paper className="signin__body" elevation={1}>
 				  <Typography variant="headline" component="h3" className="signin__header">
 		            Sign In
 		          </Typography>
@@ -55,16 +55,16 @@ class SignIn extends React.Component {
 			        className="signin__button"
 			        onClick={this.handleClick}
 			      >Enter</Button>
-				</Paper>
-			</div>
-		);
+	      </Paper>
+	    </div>
+	  );
 	}
 }
 
 function mapStateToProps({ users }) {
-	return {
+  return {
 	    users
-	}
+  };
 }
 
 export default connect(mapStateToProps)(SignIn);

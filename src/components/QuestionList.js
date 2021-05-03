@@ -3,8 +3,8 @@ import Question from './Question';
 import '../assets/css/questionlist.css';
 
 function QuestionList(props){
-	return (
-		<div className="questionlist">
+  return (
+    <div className="questionlist">
 		    <ul className="questionlist__menu">
 		        { props.questions ? 
 		            props.questions.map( (question) => {
@@ -17,8 +17,8 @@ function QuestionList(props){
 		            : null
 		        }
 		    </ul>
-		</div>
-	)
+    </div>
+  );
 }
 
 export default QuestionList;

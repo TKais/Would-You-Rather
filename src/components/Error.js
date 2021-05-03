@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 import '../assets/css/error.css';
 
 function Error(props) {
-	return (
-		<div className="error">
+  return (
+    <div className="error">
 		    { props.location.state.errorType === '401' ?
 		        <div className="error__content">
 				    <h1>{ props.location.state.errorType }: Unauthorized</h1>
@@ -16,8 +16,8 @@ function Error(props) {
 				    <p>This question does not exist.</p>
 			    </div>
 		    }
-		</div>
-	)
+    </div>
+  );
 }
 
 export default Error;

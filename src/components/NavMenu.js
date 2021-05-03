@@ -9,35 +9,35 @@ import Snackbar from '@material-ui/core/Snackbar';
 
 class NavMenu extends React.Component {
 	state = {
-		showError : false
+	  showError : false
 	}
 
 	generateLogOutLink = () => {
-		if( this.props.currentUser !== null ) {
-			return <li><NavLink to='/' exact activeClassName='active logout'>Logout</NavLink></li>;
-		}
+	  if( this.props.currentUser !== null ) {
+	    return <li><NavLink to='/' exact activeClassName='active logout'>Logout</NavLink></li>;
+	  }
 	}
 
 	currentUserIsDefined = ( route ) => {
-		if( this.props.currentUser !== null ) {
-			return route;
-		} else {
-			return '/';
-		}
+	  if( this.props.currentUser !== null ) {
+	    return route;
+	  } else {
+	    return '/';
+	  }
 	}
 
 	handleClick = ( event ) => {
-		const classes = Array.from(event.target.classList);
-		if(classes.indexOf('logout') > -1) {
-			this.props.dispatch(setCurrentUser(null));
-		}
+	  const classes = Array.from(event.target.classList);
+	  if(classes.indexOf('logout') > -1) {
+	    this.props.dispatch(setCurrentUser(null));
+	  }
 
-		this.handleState();
+	  this.handleState();
 	}
 
 	handleState = () => {
-		const userState = this.props.currentUser === null;
-		this.setState({ showError : userState });
+	  const userState = this.props.currentUser === null;
+	  this.setState({ showError : userState });
 	}
 
 	handleErrorMessageClose = (event, reason) => {
@@ -49,8 +49,8 @@ class NavMenu extends React.Component {
 	}
 
 	render() {
-		return (
-			<nav className="navmenu">
+	  return (
+	    <nav className="navmenu">
 			    <ul className="navmenu__list" onClick={this.handleClick}>
 				    <li className="navmenu__list-logo"><NavLink to={this.currentUserIsDefined('/')} exact activeClassName='active home'><img src={ Logo } alt="Logo" /></NavLink></li>
 			        <li><NavLink to={this.currentUserIsDefined('/')} exact activeClassName='active home'>Home</NavLink></li>
@@ -71,15 +71,15 @@ class NavMenu extends React.Component {
 		          }}
 		          message={<span id="message-id">Please sign in before continuing</span>}
 		        />
-			</nav>
-		);
+	    </nav>
+	  );
 	}
 }
 
 function mapStateToProps({ currentUser }) {
-	return {
-		currentUser
-	}
+  return {
+    currentUser
+  };
 }
 
 export default connect(mapStateToProps)(NavMenu);

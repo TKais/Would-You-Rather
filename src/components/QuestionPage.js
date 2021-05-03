@@ -11,84 +11,84 @@ import '../assets/css/questionpage.css';
 
 class QuestionPage extends React.Component {
 	state = {
-		currentValue: '',
-		isAnswered: false,
-		optionOnePercentage: 0,
-		optionTwoPercentage: 0,
+	  currentValue: '',
+	  isAnswered: false,
+	  optionOnePercentage: 0,
+	  optionTwoPercentage: 0,
 	}
 
 	componentDidMount() {
-		const currentQuestion = this.props.currentQuestion;
-		const currentUser = this.props.currentUser;
+	  const currentQuestion = this.props.currentQuestion;
+	  const currentUser = this.props.currentUser;
 
-		if( currentQuestion && 
+	  if( currentQuestion && 
 			(currentQuestion.optionOne.votes.indexOf( currentUser ) !== -1 ||
 		    currentQuestion.optionTwo.votes.indexOf( currentUser ) !== -1)
-		) {
-			const result = this.calculatePercentage();
+	  ) {
+	    const result = this.calculatePercentage();
 
-			this.setState({ 
-				isAnswered: true,
-				optionOnePercentage: result.optOnePercentage,
-				optionTwoPercentage: result.optTwoPercentage,
-			});
-		}
+	    this.setState({ 
+	      isAnswered: true,
+	      optionOnePercentage: result.optOnePercentage,
+	      optionTwoPercentage: result.optTwoPercentage,
+	    });
+	  }
 	}
 
 	calculatePercentage = ( currentValue ) => {
-		const optionOneVotes = currentValue === 'optionOne' ? this.props.currentQuestion.optionOne.votes.length + 1 : this.props.currentQuestion.optionOne.votes.length;
-		const optionTwoVotes = currentValue === 'optionTwo' ? this.props.currentQuestion.optionTwo.votes.length + 1 : this.props.currentQuestion.optionTwo.votes.length;
-		const totalUsers = Object.keys(this.props.users).length;
-		const voteDecimalOne = (optionOneVotes / totalUsers) * 100;
-		const voteDecimalTwo = (optionTwoVotes / totalUsers) * 100;
+	  const optionOneVotes = currentValue === 'optionOne' ? this.props.currentQuestion.optionOne.votes.length + 1 : this.props.currentQuestion.optionOne.votes.length;
+	  const optionTwoVotes = currentValue === 'optionTwo' ? this.props.currentQuestion.optionTwo.votes.length + 1 : this.props.currentQuestion.optionTwo.votes.length;
+	  const totalUsers = Object.keys(this.props.users).length;
+	  const voteDecimalOne = (optionOneVotes / totalUsers) * 100;
+	  const voteDecimalTwo = (optionTwoVotes / totalUsers) * 100;
 
-		return {
-			optOnePercentage: parseInt(voteDecimalOne.toFixed(1), 10),
-			optOneNumOfVotes: optionOneVotes,
-			optTwoPercentage: parseInt(voteDecimalTwo.toFixed(1), 10),
-			optTwoNumOfVotes: optionTwoVotes,
-		}
+	  return {
+	    optOnePercentage: parseInt(voteDecimalOne.toFixed(1), 10),
+	    optOneNumOfVotes: optionOneVotes,
+	    optTwoPercentage: parseInt(voteDecimalTwo.toFixed(1), 10),
+	    optTwoNumOfVotes: optionTwoVotes,
+	  };
 	}
 
 	handleSubmit = ( event ) => {
-		event.preventDefault();
-		const { currentValue } = this.state;
-		const { id } = this.props.currentQuestion;
-		const { currentUser } = this.props;
-		const answer = { authedUser: currentUser, qid: id, answer: currentValue };
-		if( currentValue ) {
-			const result = this.calculatePercentage( currentValue );
-			this.props.dispatch(createAnswer(answer));
-			this.setState( () => ({
-				currentValue: '',
-				isAnswered: true,
-				optionOnePercentage: result.optOnePercentage,
-				optionTwoPercentage: result.optTwoPercentage,
-			}));
-		}
+	  event.preventDefault();
+	  const { currentValue } = this.state;
+	  const { id } = this.props.currentQuestion;
+	  const { currentUser } = this.props;
+	  const answer = { authedUser: currentUser, qid: id, answer: currentValue };
+	  if( currentValue ) {
+	    const result = this.calculatePercentage( currentValue );
+	    this.props.dispatch(createAnswer(answer));
+	    this.setState( () => ({
+	      currentValue: '',
+	      isAnswered: true,
+	      optionOnePercentage: result.optOnePercentage,
+	      optionTwoPercentage: result.optTwoPercentage,
+	    }));
+	  }
 	}
 
 	handleChange = ( event ) => {
-		const value = event.target.value;
+	  const value = event.target.value;
 
-		this.setState({ currentValue: value });
+	  this.setState({ currentValue: value });
 	}
 
 	render() {
-		if ( this.props.currentUser === null ) {
+	  if ( this.props.currentUser === null ) {
 	      return <Redirect to={{
-                pathname: '/error',
-                state: { errorType: '401' }
-            }} />
+	      pathname: '/error',
+	      state: { errorType: '401' }
+	    }} />;
 	    } else if( !this.props.currentQuestion ) {
 	    	return <Redirect to={{
-                pathname: '/error',
-                state: { errorType: '404' }
-            }} />
+	      pathname: '/error',
+	      state: { errorType: '404' }
+	    }} />;
 	    }
 
-		return (
-			<div className="single-question">
+	  return (
+	    <div className="single-question">
 			    { this.state.isAnswered ? 
 			    	<div>
 			    	    <Card className="single-question__card">
@@ -138,7 +138,7 @@ class QuestionPage extends React.Component {
 								  </div>
 							  }
 						  </CardContent>
-						</Card>
+	          </Card>
 			    	</div>
 			    	:
 			    	<div>
@@ -159,20 +159,20 @@ class QuestionPage extends React.Component {
 						    >Submit</Button>
 					    </form>
 				    </div>
-				}
+	      }
         	</div>
-		);
+	  );
 	}
 }
 
 function mapStateToProps({ currentUser, users, questions }, props) {
-	const { id } = props.match.params;
+  const { id } = props.match.params;
 
-	return {
-		currentUser: currentUser ? Object.values(currentUser).join('') : null,
-		users,
-		currentQuestion: questions[id],
-	}
+  return {
+    currentUser: currentUser ? Object.values(currentUser).join('') : null,
+    users,
+    currentQuestion: questions[id],
+  };
 }
 
 export default connect(mapStateToProps)(QuestionPage);

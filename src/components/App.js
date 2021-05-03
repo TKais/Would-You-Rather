@@ -53,7 +53,7 @@ function mapStateToProps ({ currentUser, users }) {
   return {
     currentUser,
     users
-  }
+  };
 }
 
 
