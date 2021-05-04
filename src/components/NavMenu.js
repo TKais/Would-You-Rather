@@ -5,11 +5,10 @@ import '../assets/css/navmenu.css';
 import * as Logo from '../assets/images/logo.png';
 import { setCurrentUser } from '../actions/currentUser';
 import Snackbar from '@material-ui/core/Snackbar';
-import { users } from '../reducers/users';
 
 
 function NavMenu(props) {
-	const [showError, setErrorState] = useState(false)
+	const [showError, setErrorState] = useState(false);
 
 	function generateLogOutLink() {
 	  if( props.currentUser !== null ) {
@@ -49,26 +48,26 @@ function NavMenu(props) {
 
 	return (
 		<nav className="navmenu">
-				<ul className="navmenu__list" onClick={handleClick}>
-					<li className="navmenu__list-logo"><NavLink to={currentUserIsDefined('/')} exact activeClassName='active home'><img src={ Logo } alt="Logo" /></NavLink></li>
-						<li><NavLink to={currentUserIsDefined('/')} exact activeClassName='active home'>Home</NavLink></li>
-						<li><NavLink to={currentUserIsDefined('/add')} activeClassName='active add'>New Question</NavLink></li>
-						<li><NavLink to={currentUserIsDefined('/leaderboard')} activeClassName='active leaderboard'>Leaderboard</NavLink></li>
-						{ generateLogOutLink() }
-				</ul>
-				<Snackbar
-						anchorOrigin={{
-							vertical: 'top',
-							horizontal: 'center',
-						}}
-						open={showError}
-						autoHideDuration={3000}
-						onClose={handleErrorMessageClose}
-						ContentProps={{
-							'aria-describedby': 'message-id',
-						}}
-						message={<span id="message-id">Please sign in before continuing</span>}
-					/>
+			<ul className="navmenu__list" onClick={handleClick}>
+				<li className="navmenu__list-logo"><NavLink to={currentUserIsDefined('/')} exact activeClassName='active home'><img src={ Logo } alt="Logo" /></NavLink></li>
+					<li><NavLink to={currentUserIsDefined('/')} exact activeClassName='active home'>Home</NavLink></li>
+					<li><NavLink to={currentUserIsDefined('/add')} activeClassName='active add'>New Question</NavLink></li>
+					<li><NavLink to={currentUserIsDefined('/leaderboard')} activeClassName='active leaderboard'>Leaderboard</NavLink></li>
+					{ generateLogOutLink() }
+			</ul>
+			<Snackbar
+				anchorOrigin={{
+					vertical: 'top',
+					horizontal: 'center',
+				}}
+				open={showError}
+				autoHideDuration={3000}
+				onClose={handleErrorMessageClose}
+				ContentProps={{
+					'aria-describedby': 'message-id',
+				}}
+				message={<span id="message-id">Please sign in before continuing</span>}
+			/>
 		</nav>
 	);
 }
