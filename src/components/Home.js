@@ -1,18 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import QuestionList from './QuestionList';
 import Button from '@material-ui/core/Button';
 import '../assets/css/home.css';
 
-class Home extends React.Component {
-	state = {
-	  hideAnswered: true,
-	  hideUnanswered: false,
-	}
+function Home(props) {
+	const [hideAnswered, setHideAnswered] = useState(true);
+	const [hideUnanswered, setHideUnanswered] = useState(false);
 
 	generateAnsweredQuestions = () => {
-	  const user = this.props.users[this.props.currentUser];
-	  const answered = this.props.questions.map( (question) => {
+	  const user = props.users[props.currentUser];
+	  const answered = props.questions.map( (question) => {
 	    if( Object.keys(user.answers).indexOf(question) !== -1 ) {
 	      return question;
 	    } else {
@@ -24,8 +22,8 @@ class Home extends React.Component {
 	}
 
 	generateUnansweredQuestions = () => {
-	  const user = this.props.users[this.props.currentUser];
-	  const unanswered = this.props.questions.map( (question) => {
+	  const user = props.users[props.currentUser];
+	  const unanswered = props.questions.map( (question) => {
 	    if( !(user.answers.hasOwnProperty(question)) ) {
 	      return question;
 	    } else {
@@ -41,40 +39,40 @@ class Home extends React.Component {
 	  const classes = target.classList;
 
 	  if( classes.contains( 'home-component__buttons--unanswered' ) ) {
-	    this.setState({ hideAnswered: true, hideUnanswered: false });
+			setHideAnswered(true);
+			setHideUnanswered(false);
 	  } else if ( classes.contains( 'home-component__buttons--answered' ) ) {
-	    this.setState({ hideAnswered: false, hideUnanswered: true });
+			setHideAnswered(false);
+			setHideUnanswered(true);
 	  }
 	}
 
-	render() {
-	  return (
-	    <div className="home-component">
-			    <div className="home-component__buttons">
-				    <Button
-				        variant="contained"
-				        type="button"
-				        color="primary"
-				        className={`home-component__buttons--unanswered ${ this.state.hideUnanswered === false ? 'home-component__buttons--unanswered-active' : '' }`}
-				        onClick={this.handleClick}
-				    >Unanswered Qs</Button>
-				    <Button
-				        variant="contained"
-				        type="button"
-				        color="primary"
-				        className={`home-component__buttons--answered ${ this.state.hideAnswered === false ? 'home-component__buttons--answered-active' : '' }`}
-				        onClick={this.handleClick}
-				    >Answered Qs</Button>
-			    </div>
-			    <div className={`home-component__question-unanswered-list ${ this.state.hideUnanswered ? 'home-component__question-hide' : '' }`}>
-	        <QuestionList questions={ this.generateUnansweredQuestions() } />
-	      </div>
-	      <div className={`home-component__question-answered-list ${ this.state.hideAnswered ? 'home-component__question-hide' : '' }`}>
-	        <QuestionList questions={ this.generateAnsweredQuestions() } />
-	      </div>
-	    </div>
-	  );
-	}
+	return (
+		<div className="home-component">
+			<div className="home-component__buttons">
+				<Button
+					variant="contained"
+					type="button"
+					color="primary"
+					className={`home-component__buttons--unanswered ${ this.state.hideUnanswered === false ? 'home-component__buttons--unanswered-active' : '' }`}
+					onClick={this.handleClick}
+				>Unanswered Qs</Button>
+				<Button
+					variant="contained"
+					type="button"
+					color="primary"
+					className={`home-component__buttons--answered ${ this.state.hideAnswered === false ? 'home-component__buttons--answered-active' : '' }`}
+					onClick={this.handleClick}
+				>Answered Qs</Button>
+			</div>
+			<div className={`home-component__question-unanswered-list ${ this.state.hideUnanswered ? 'home-component__question-hide' : '' }`}>
+				<QuestionList questions={ this.generateUnansweredQuestions() } />
+			</div>
+			<div className={`home-component__question-answered-list ${ this.state.hideAnswered ? 'home-component__question-hide' : '' }`}>
+				<QuestionList questions={ this.generateAnsweredQuestions() } />
+			</div>
+		</div>
+	);
 }
 
 function mapStateToProps({ questions, currentUser, users }) {

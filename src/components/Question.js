@@ -3,31 +3,29 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import '../assets/css/question.css';
 
-class Question extends React.Component {
+function Question(props) {
 	getRoute = (question) => {
-	  const id = this.props.questions[this.props.question].id;
+	  const id = props.questions[props.question].id;
 	  return `questions/${id}`;
 	}
 
 	formatName = (question) => {
 	  const author = question.author;
-	  const formattedAuthor = this.props.users[author] && this.props.users[author].name;
+	  const formattedAuthor = props.users[author] && props.users[author].name;
 
 	  return formattedAuthor;
 	}
 
-	render() {
-	  return (
-	    <li className="questionlist__menu-item" key={this.props.questions[this.props.question].id}>
-			    <h3 className="questionlist__menu-item-author">{ `${this.formatName(this.props.questions[this.props.question])} asks...` }</h3>
-			    <p className="questionlist__menu-item-title">Would You Rather:</p>
-			    <p className="questionlist__menu-item-option">{this.props.questions[this.props.question].optionOne.text}</p>
-			    <p className="questionlist__menu-item-OR">OR</p>
-			    <p className="questionlist__menu-item-option">{this.props.questions[this.props.question].optionTwo.text}</p>
-    	        <NavLink to={this.getRoute(this.props.question)} exact className='questionlist__menu-item-anchor'><span>View Poll</span></NavLink>
-        	</li>
-	  );
-	}
+	return (
+		<li className="questionlist__menu-item" key={props.questions[props.question].id}>
+			<h3 className="questionlist__menu-item-author">{ `${formatName(props.questions[props.question])} asks...` }</h3>
+			<p className="questionlist__menu-item-title">Would You Rather:</p>
+			<p className="questionlist__menu-item-option">{props.questions[props.question].optionOne.text}</p>
+			<p className="questionlist__menu-item-OR">OR</p>
+			<p className="questionlist__menu-item-option">{props.questions[props.question].optionTwo.text}</p>
+					<NavLink to={getRoute(props.question)} exact className='questionlist__menu-item-anchor'><span>View Poll</span></NavLink>
+		</li>
+	);
 }
 
 function mapStateToProps({ users, questions }) {

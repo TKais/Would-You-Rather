@@ -1,79 +1,76 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import '../assets/css/navmenu.css';
 import * as Logo from '../assets/images/logo.png';
 import { setCurrentUser } from '../actions/currentUser';
 import Snackbar from '@material-ui/core/Snackbar';
+import { users } from '../reducers/users';
 
 
-class NavMenu extends React.Component {
-	state = {
-	  showError : false
-	}
+function NavMenu(props) {
+	const [showError, setErrorState] = useState(false)
 
-	generateLogOutLink = () => {
-	  if( this.props.currentUser !== null ) {
+	function generateLogOutLink() {
+	  if( props.currentUser !== null ) {
 	    return <li><NavLink to='/' exact activeClassName='active logout'>Logout</NavLink></li>;
 	  }
 	}
 
-	currentUserIsDefined = ( route ) => {
-	  if( this.props.currentUser !== null ) {
+	function currentUserIsDefined(route) {
+	  if( props.currentUser !== null ) {
 	    return route;
 	  } else {
 	    return '/';
 	  }
 	}
 
-	handleClick = ( event ) => {
+	function handleClick(event) {
 	  const classes = Array.from(event.target.classList);
 	  if(classes.indexOf('logout') > -1) {
-	    this.props.dispatch(setCurrentUser(null));
+	    props.dispatch(setCurrentUser(null));
 	  }
 
-	  this.handleState();
+	  handleState();
 	}
 
-	handleState = () => {
-	  const userState = this.props.currentUser === null;
-	  this.setState({ showError : userState });
+	function handleState() {
+	  const userState = props.currentUser === null;
+	  setErrorState(userState);
 	}
 
-	handleErrorMessageClose = (event, reason) => {
-	    if (reason === 'clickaway') {
-	      return;
-	    }
+	function handleErrorMessageClose(event, reason) {
+		if (reason === 'clickaway') {
+			return;
+		}
 
-	    this.setState({ showError: false });
+		setErrorState(false);
 	}
 
-	render() {
-	  return (
-	    <nav className="navmenu">
-			    <ul className="navmenu__list" onClick={this.handleClick}>
-				    <li className="navmenu__list-logo"><NavLink to={this.currentUserIsDefined('/')} exact activeClassName='active home'><img src={ Logo } alt="Logo" /></NavLink></li>
-			        <li><NavLink to={this.currentUserIsDefined('/')} exact activeClassName='active home'>Home</NavLink></li>
-			        <li><NavLink to={this.currentUserIsDefined('/add')} activeClassName='active add'>New Question</NavLink></li>
-			        <li><NavLink to={this.currentUserIsDefined('/leaderboard')} activeClassName='active leaderboard'>Leaderboard</NavLink></li>
-			        { this.generateLogOutLink() }
-			    </ul>
-			    <Snackbar
-		          anchorOrigin={{
-		            vertical: 'top',
-		            horizontal: 'center',
-		          }}
-		          open={this.state.showError}
-		          autoHideDuration={3000}
-		          onClose={this.handleErrorMessageClose}
-		          ContentProps={{
-		            'aria-describedby': 'message-id',
-		          }}
-		          message={<span id="message-id">Please sign in before continuing</span>}
-		        />
-	    </nav>
-	  );
-	}
+	return (
+		<nav className="navmenu">
+				<ul className="navmenu__list" onClick={handleClick}>
+					<li className="navmenu__list-logo"><NavLink to={currentUserIsDefined('/')} exact activeClassName='active home'><img src={ Logo } alt="Logo" /></NavLink></li>
+						<li><NavLink to={currentUserIsDefined('/')} exact activeClassName='active home'>Home</NavLink></li>
+						<li><NavLink to={currentUserIsDefined('/add')} activeClassName='active add'>New Question</NavLink></li>
+						<li><NavLink to={currentUserIsDefined('/leaderboard')} activeClassName='active leaderboard'>Leaderboard</NavLink></li>
+						{ generateLogOutLink() }
+				</ul>
+				<Snackbar
+						anchorOrigin={{
+							vertical: 'top',
+							horizontal: 'center',
+						}}
+						open={showError}
+						autoHideDuration={3000}
+						onClose={handleErrorMessageClose}
+						ContentProps={{
+							'aria-describedby': 'message-id',
+						}}
+						message={<span id="message-id">Please sign in before continuing</span>}
+					/>
+		</nav>
+	);
 }
 
 function mapStateToProps({ currentUser }) {

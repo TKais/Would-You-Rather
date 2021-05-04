@@ -1,64 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import '../assets/css/newquestion.css';
 import Button from '@material-ui/core/Button';
 import { createQuestion } from '../actions/questions';
 
-class NewQuestion extends React.Component {
-	state = {
-	  optionOneText: '',
-	  optionTwoText: '',
-	  redirect: false,
+function NewQuestion(props) {
+	const [optionOneText, setOptionOneText] = useState('');
+	const [optionTwoText, setOptionTwoText] = useState('');
+	const [redirect, shouldRedirect] = useState(false);
+
+	if ( redirect || props.currentUser === null ) {
+		return <Redirect to='/' />;
 	}
 
 	handleSubmit = (event) => {
 	  event.preventDefault();
-	  const { optionOneText, optionTwoText } = this.state;
-	  const question = { optionOneText, optionTwoText, author: this.props.currentUser };
+	  const question = { optionOneText, optionTwoText, author: props.currentUser };
 	  if( optionOneText && optionTwoText ) {
-	    this.props.dispatch(createQuestion(question));
-	    this.setState( () => ({
-	      optionOneText: '',
-	      optionTwoText: '',
-	      redirect: true,
-	    }));
+	    props.dispatch(createQuestion(question));
+			setOptionOneText('');
+			setOptionTwoText('');
+			shouldRedirect(true);
 	  }
 	}
 
 	handleChange = (event) => {
 	  const value = event.target.value;
 	  const id = event.target.id;
-	  const inputToUpdate = id === 'option-one' ? 'optionOneText' : 'optionTwoText';
-
-	  this.setState({ [inputToUpdate]: value });
+	  id === 'option-one' ? setOptionOneText(value) : setOptionTwoText(value);
 	}
 
-	render() {
-	  const { redirect } = this.state;
-	  if ( redirect || this.props.currentUser === null ) {
-	      return <Redirect to='/' />;
-	    }
-
-	  return (
-	    <div className="new-question">
-			    <h2>Create New Question</h2>
-			    <p>Would You Rather...</p>
-	      <form className="new-question__form" onSubmit={ this.handleSubmit }>
-	        <label htmlFor="option-one">Option One</label>
-	        <input id="option-one" type="text" value={ this.state.optionOneText } onChange={ this.handleChange } />
-	        <label htmlFor="option-two">Option Two</label>
-	        <input id="option-two" type="text" value={ this.state.optionTwoText } onChange={ this.handleChange } />
-	        <Button
-				        variant="contained"
-				        type="submit"
-				        color="primary"
-				        className="new-question__form-button"
-				    >Submit</Button>
-	      </form>
-	    </div>
-	  );
-	}
+	return (
+		<div className="new-question">
+			<h2>Create New Question</h2>
+			<p>Would You Rather...</p>
+			<form className="new-question__form" onSubmit={ handleSubmit }>
+				<label htmlFor="option-one">Option One</label>
+				<input id="option-one" type="text" value={ optionOneText } onChange={ handleChange } />
+				<label htmlFor="option-two">Option Two</label>
+				<input id="option-two" type="text" value={ optionTwoText } onChange={ handleChange } />
+				<Button
+					variant="contained"
+					type="submit"
+					color="primary"
+					className="new-question__form-button"
+				>Submit</Button>
+			</form>
+		</div>
+	);
 }
 
 function mapStateToProps({ currentUser }) {
