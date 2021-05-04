@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import '../assets/css/question.css';
 
 function Question(props) {
-	getRoute = (question) => {
+	function getRoute(question) {
 	  const id = props.questions[props.question].id;
 	  return `questions/${id}`;
 	}
 
-	formatName = (question) => {
+	function formatName(question) {
 	  const author = question.author;
 	  const formattedAuthor = props.users[author] && props.users[author].name;
 

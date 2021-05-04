@@ -8,7 +8,7 @@ function Home(props) {
 	const [hideAnswered, setHideAnswered] = useState(true);
 	const [hideUnanswered, setHideUnanswered] = useState(false);
 
-	generateAnsweredQuestions = () => {
+	function generateAnsweredQuestions() {
 	  const user = props.users[props.currentUser];
 	  const answered = props.questions.map( (question) => {
 	    if( Object.keys(user.answers).indexOf(question) !== -1 ) {
@@ -21,7 +21,7 @@ function Home(props) {
 	  return answered;
 	}
 
-	generateUnansweredQuestions = () => {
+	function generateUnansweredQuestions() {
 	  const user = props.users[props.currentUser];
 	  const unanswered = props.questions.map( (question) => {
 	    if( !(user.answers.hasOwnProperty(question)) ) {
@@ -34,7 +34,7 @@ function Home(props) {
 	  return unanswered;
 	}
 
-	handleClick = ( event ) => {
+	function handleClick(event) {
 	  const target = event.target;
 	  const classes = target.classList;
 
@@ -54,22 +54,22 @@ function Home(props) {
 					variant="contained"
 					type="button"
 					color="primary"
-					className={`home-component__buttons--unanswered ${ this.state.hideUnanswered === false ? 'home-component__buttons--unanswered-active' : '' }`}
-					onClick={this.handleClick}
+					className={`home-component__buttons--unanswered ${ hideUnanswered === false ? 'home-component__buttons--unanswered-active' : '' }`}
+					onClick={handleClick}
 				>Unanswered Qs</Button>
 				<Button
 					variant="contained"
 					type="button"
 					color="primary"
-					className={`home-component__buttons--answered ${ this.state.hideAnswered === false ? 'home-component__buttons--answered-active' : '' }`}
-					onClick={this.handleClick}
+					className={`home-component__buttons--answered ${ hideAnswered === false ? 'home-component__buttons--answered-active' : '' }`}
+					onClick={handleClick}
 				>Answered Qs</Button>
 			</div>
-			<div className={`home-component__question-unanswered-list ${ this.state.hideUnanswered ? 'home-component__question-hide' : '' }`}>
-				<QuestionList questions={ this.generateUnansweredQuestions() } />
+			<div className={`home-component__question-unanswered-list ${ hideUnanswered ? 'home-component__question-hide' : '' }`}>
+				<QuestionList questions={ generateUnansweredQuestions() } />
 			</div>
-			<div className={`home-component__question-answered-list ${ this.state.hideAnswered ? 'home-component__question-hide' : '' }`}>
-				<QuestionList questions={ this.generateAnsweredQuestions() } />
+			<div className={`home-component__question-answered-list ${ hideAnswered ? 'home-component__question-hide' : '' }`}>
+				<QuestionList questions={ generateAnsweredQuestions() } />
 			</div>
 		</div>
 	);
