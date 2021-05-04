@@ -85,53 +85,53 @@ function QuestionPage(props) {
 			{ isAnswered ? 
 				<div>
 					<Card className="single-question__card">
-					<CardContent>
+						<CardContent>
 							<h3 className="single-question__author--answered">{ `Asked by ${props.users[props.currentQuestion.author].name}` }</h3>
-						<h4 className="single-question__title--answered">Results:</h4>
-						{ props.currentQuestion.optionOne.votes.indexOf( props.currentUser ) !== -1 ?
-									<div className="single-question__block--answered">
+							<h4 className="single-question__title--answered">Results:</h4>
+							{ props.currentQuestion.optionOne.votes.indexOf( props.currentUser ) !== -1 ?
+								<div className="single-question__block--answered">
 									<Badge badgeContent="Your vote">
-											<label className="single-question__block-label--answered" htmlFor="optionOneProgress">{ props.currentQuestion.optionOne.text }</label>
+										<label className="single-question__block-label--answered" htmlFor="optionOneProgress">{ props.currentQuestion.optionOne.text }</label>
 									</Badge>
 									<LinearProgress id="optionOneProgress" variant="determinate" value={ optionOnePercentage } />
 									<p>
-											<span>{ optionOnePercentage }%</span>
-											<span>{ `${calculatePercentage().optOneNumOfVotes} out of ${Object.keys(props.users).length} votes` }</span>
-									</p>
-								</div>
-							:
-							<div className="single-question__block--answered">
-								<label className="single-question__block-label--answered" htmlFor="optionOneProgress">{ props.currentQuestion.optionOne.text }</label>
-								<LinearProgress id="optionOneProgress" variant="determinate" value={ optionOnePercentage } />
-								<p>
 										<span>{ optionOnePercentage }%</span>
 										<span>{ `${calculatePercentage().optOneNumOfVotes} out of ${Object.keys(props.users).length} votes` }</span>
-								</p>
-							</div>
-						}
-						{ props.currentQuestion.optionTwo.votes.indexOf( props.currentUser ) !== -1 ?
-									<div className="single-question__block--answered">
+									</p>
+								</div>
+								:
+								<div className="single-question__block--answered">
+									<label className="single-question__block-label--answered" htmlFor="optionOneProgress">{ props.currentQuestion.optionOne.text }</label>
+									<LinearProgress id="optionOneProgress" variant="determinate" value={ optionOnePercentage } />
+									<p>
+										<span>{ optionOnePercentage }%</span>
+										<span>{ `${calculatePercentage().optOneNumOfVotes} out of ${Object.keys(props.users).length} votes` }</span>
+									</p>
+								</div>
+							}
+							{ props.currentQuestion.optionTwo.votes.indexOf( props.currentUser ) !== -1 ?
+								<div className="single-question__block--answered">
 									<Badge badgeContent="Your vote">
-											<label className="single-question__block-label--answered" htmlFor="optionTwoProgress">{ props.currentQuestion.optionTwo.text }</label>
+										<label className="single-question__block-label--answered" htmlFor="optionTwoProgress">{ props.currentQuestion.optionTwo.text }</label>
 									</Badge>
 									<LinearProgress id="optionTwoProgress" variant="determinate" color="secondary" value={ optionTwoPercentage } />
 									<p>
 										<span>{ optionTwoPercentage }%</span>
 										<span>{ `${calculatePercentage().optTwoNumOfVotes} out of ${Object.keys(props.users).length} votes` }</span>
-								</p>
+									</p>
 								</div>
-							:
-							<div className="single-question__block--answered">
-								<label className="single-question__block-label--answered" htmlFor="optionTwoProgress">{ props.currentQuestion.optionTwo.text }</label>
-								<LinearProgress id="optionTwoProgress" color="secondary" variant="determinate" value={ optionTwoPercentage } />
-								<p>
+								:
+								<div className="single-question__block--answered">
+									<label className="single-question__block-label--answered" htmlFor="optionTwoProgress">{ props.currentQuestion.optionTwo.text }</label>
+									<LinearProgress id="optionTwoProgress" color="secondary" variant="determinate" value={ optionTwoPercentage } />
+									<p>
 										<span>{ optionTwoPercentage }%</span>
 										<span>{ `${calculatePercentage().optTwoNumOfVotes} out of ${Object.keys(props.users).length} votes` }</span>
-								</p>
-							</div>
-						}
-					</CardContent>
-				</Card>
+									</p>
+								</div>
+							}
+						</CardContent>
+					</Card>
 				</div>
 				:
 				<div>
@@ -144,11 +144,11 @@ function QuestionPage(props) {
 						<p className="single-question__OR--unanswered">OR</p>
 						<input id="question2" type="radio" name="whichQuestion" value={currentValue || 'optionTwo'} />
 						<label htmlFor="question2">{props.currentQuestion.optionTwo.text}</label>
-								<Button
-								variant="contained"
-								color="primary"
-								type="submit"
-								className="single-question__button--unanswered"
+						<Button
+							variant="contained"
+							color="primary"
+							type="submit"
+							className="single-question__button--unanswered"
 						>Submit</Button>
 					</form>
 				</div>

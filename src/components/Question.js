@@ -23,7 +23,7 @@ function Question(props) {
 			<p className="questionlist__menu-item-option">{props.questions[props.question].optionOne.text}</p>
 			<p className="questionlist__menu-item-OR">OR</p>
 			<p className="questionlist__menu-item-option">{props.questions[props.question].optionTwo.text}</p>
-					<NavLink to={getRoute(props.question)} exact className='questionlist__menu-item-anchor'><span>View Poll</span></NavLink>
+				<NavLink to={getRoute(props.question)} exact className='questionlist__menu-item-anchor'><span>View Poll</span></NavLink>
 		</li>
 	);
 }

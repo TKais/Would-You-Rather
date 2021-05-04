@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import '../assets/css/currentuser.css';
 
-class CurrentUser extends React.Component {
-  getCurrentUser() {
-    const user = this.props.currentUser;
+function CurrentUser(props) {
+  function getCurrentUser() {
+    const user = props.currentUser;
     const loggedInUser = user !== null && Object.values(user).join('');
-    const name = loggedInUser && this.props.users[loggedInUser].name;
+    const name = loggedInUser && props.users[loggedInUser].name;
 
     if( name ) {
       return `Welcome, ${name}!`;
@@ -15,11 +15,9 @@ class CurrentUser extends React.Component {
     }
   }
 
-  render() {
-    return (
-      <div className="welcome">{ this.getCurrentUser() }</div>
-    );
-  }
+  return (
+    <div className="welcome">{ getCurrentUser() }</div>
+  );
 }
 
 function mapStateToProps({ currentUser, users }) {

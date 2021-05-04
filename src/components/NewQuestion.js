@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import '../assets/css/newquestion.css';
@@ -10,9 +10,11 @@ function NewQuestion(props) {
 	const [optionTwoText, setOptionTwoText] = useState('');
 	const [redirect, shouldRedirect] = useState(false);
 
-	if ( redirect || props.currentUser === null ) {
-		return <Redirect to='/' />;
-	}
+	useEffect(() => {
+		if ( redirect || props.currentUser === null ) {
+			return <Redirect to='/' />;
+		}
+	});
 
 	handleSubmit = (event) => {
 	  event.preventDefault();
