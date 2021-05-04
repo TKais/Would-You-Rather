@@ -14,15 +14,20 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "lint": "eslint src/ -c .eslintrc.json --fix",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test-start": "webpack --config webpack.config.js && webpack serve --hot --mode development --port 9000",
+    "lint": "eslint src/ -c .eslintrc.json --fix"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.13.13",
     "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.4",
     "eslint": "^7.25.0",
-    "webpack": "^5.36.2"
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }
