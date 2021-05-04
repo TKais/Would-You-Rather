@@ -1,6 +1,6 @@
 # Would You Rather 
 
-An app for playing the game "Would You Rather." 
+A React/Redux web app for playing the game "Would You Rather."
 
 ## Starting the Application
 
