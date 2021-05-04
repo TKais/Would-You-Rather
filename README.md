@@ -16,6 +16,7 @@ This app uses the following technologies:
 * Redux
 * ES6
 * Material-UI
+* Webpack
 
 ## App Features
 
