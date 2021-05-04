@@ -22,7 +22,10 @@ module.exports = {
       },
       {
         test: /\.(png|jpeg|svg)$/i,
-        loader: 'file-loader'
+        loader: 'url-loader',
+        options: {
+          esModule: false,
+        },
       },
     ]
   },
