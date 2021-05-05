@@ -16,7 +16,7 @@ function NewQuestion(props) {
 		}
 	});
 
-	handleSubmit = (event) => {
+	function handleSubmit(event) {
 	  event.preventDefault();
 	  const question = { optionOneText, optionTwoText, author: props.currentUser };
 	  if( optionOneText && optionTwoText ) {
@@ -27,7 +27,7 @@ function NewQuestion(props) {
 	  }
 	}
 
-	handleChange = (event) => {
+	function handleChange(event) {
 	  const value = event.target.value;
 	  const id = event.target.id;
 	  id === 'option-one' ? setOptionOneText(value) : setOptionTwoText(value);
