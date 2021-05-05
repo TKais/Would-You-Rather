@@ -6,7 +6,7 @@ import '../assets/css/scorecard.css';
 function ScoreCard(props) {
   return (
     <Card className="scorecard">
-			<CardContent>
+			<CardContent className="scorecard__content">
 				<h3>{props.user.name}</h3>
 				<p>Answered Questions: {Object.keys(props.user.answers).length}</p>
 				<p>Created Questions: {props.user.questions.length}</p>
