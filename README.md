@@ -17,6 +17,8 @@ This app uses the following technologies:
 * ES6
 * Material-UI
 * Webpack
+* Jest
+* React Testing Library
 
 ## App Features
 
