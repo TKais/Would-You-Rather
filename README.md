@@ -2,10 +2,16 @@
 
 A React/Redux web app for playing the game "Would You Rather."
 
+## Scripts
+
+* `npm run start` : Builds and starts the application
+* `npm run lint` : Runs ESLint on the src folder
+* `npm run test` : Runs the Jest test framework on the test folder. Utilizes React Testing Library utility functions
+
 ## Starting the Application
 
 * Run `npm install`
-* Run `npm start`
+* Run `npm run start`
 * Navigate to localhost:3000 in a browser
 
 ## Technical Details
